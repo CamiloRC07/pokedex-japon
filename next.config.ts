@@ -19,12 +19,15 @@ const withPWA = withPWAInit({
     runtimeCaching: [
       {
         urlPattern: /\.(?:png|jpg|jpeg|svg|webp)$/i,
-        handler: "CacheFirst",
+        handler: "StaleWhileRevalidate",
         options: {
           cacheName: "pokemon-images-cache",
           expiration: {
             maxEntries: 2000,
             maxAgeSeconds: 60 * 60 * 24 * 365,
+          },
+          cacheableResponse: {
+            statuses: [0, 200],
           },
         },
       },
