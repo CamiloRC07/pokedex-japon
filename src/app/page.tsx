@@ -139,15 +139,60 @@ export default function Home() {
   // --- HELPER: CONVERTIR URL A BASE64 ---
   const getBase64FromUrl = async (url: string): Promise<string> => {
     try {
+      // 1. Descargamos la imagen (aprovechando caché PWA)
       const res = await fetch(url);
       const blob = await res.blob();
+
+      // 2. Creamos un elemento de imagen HTML en memoria
       return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result as string);
-        reader.readAsDataURL(blob);
+        const img = new Image();
+        img.src = URL.createObjectURL(blob);
+        img.crossOrigin = "Anonymous"; // Importante para evitar problemas de CORS
+
+        img.onload = () => {
+          // 3. Creamos un Canvas para redimensionar
+          const canvas = document.createElement('canvas');
+
+          // Definimos un tamaño máximo (500px es suficiente para un cuadro de 25mm a buena calidad)
+          const maxWidth = 500;
+          const scale = maxWidth / img.width;
+
+          // Si la imagen es pequeña, no la agrandamos, usamos el original
+          const targetWidth = img.width > maxWidth ? maxWidth : img.width;
+          const targetHeight = img.width > maxWidth ? img.height * scale : img.height;
+
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            // PINTAR FONDO BLANCO (Clave si tus PNG/WEBP tienen transparencia)
+            // Si no hacemos esto, el fondo transparente se vuelve negro en JPEG
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar la imagen redimensionada
+            ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+            // 4. Exportar como JPEG comprimido al 70% (0.7)
+            // Esto reduce el peso drásticamente comparado con PNG o Base64 crudo
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+
+            // Limpieza de memoria
+            URL.revokeObjectURL(img.src);
+            resolve(dataUrl);
+          } else {
+            resolve("");
+          }
+        };
+
+        img.onerror = () => {
+          URL.revokeObjectURL(img.src);
+          resolve("");
+        };
       });
     } catch (error) {
-      console.error("Error cargando imagen para PDF:", url, error);
+      console.error("Error optimizando imagen:", url, error);
       return "";
     }
   };
@@ -250,7 +295,7 @@ export default function Home() {
 
     // 5. Guardar y Limpiar
     doc.save("pokemon_fit_list.pdf");
-    setSelectedKeys(new Set()); // <--- LIMPIAR CARRITO
+    // setSelectedKeys(new Set()); // <--- LIMPIAR CARRITO
     setIsGeneratingPdf(false);
   };
 
@@ -262,6 +307,7 @@ export default function Home() {
       <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md px-4 py-3 shadow-sm border-b border-gray-200 text-gray-600">
         <div className="relative">
           <input
+            autoComplete="off"
             id='searchBar'
             type="text"
             placeholder="Buscar (Nombre o N°)..."
