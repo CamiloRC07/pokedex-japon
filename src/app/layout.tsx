@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "Pokedex Japan",
   description: "Offline Pokedex",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/192x192.png",
+    apple: "/512x512.png",
+    shortcut: "/192x192.png",
+  },
 };
 
 // Configuración para que se sienta como App en iPhone (sin zoom indeseado)
