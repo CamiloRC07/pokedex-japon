@@ -50,17 +50,11 @@ export default function Home() {
       .catch(err => console.error("Error cargando JSON:", err));
   }, []);
 
-  // 2. Filtrado y Aplanamiento
-  const fullFilteredList = useMemo(() => {
-    const term = search.toLowerCase();
+  // 2.a. Aplanamiento Total (Fuente de verdad para el PDF)
+  // Esta lista contiene SIEMPRE todos los pokemones, sin importar la búsqueda.
+  const allPokemonFlat = useMemo(() => {
     const result: DisplayCard[] = [];
-
-    const filteredPokemon = rawData.filter((p) =>
-      p.name.toLowerCase().includes(term) ||
-      p.id.toString().includes(term)
-    );
-
-    for (const poke of filteredPokemon) {
+    for (const poke of rawData) {
       if (!poke.groups) continue;
       for (const group of poke.groups) {
         result.push({
@@ -73,7 +67,21 @@ export default function Home() {
       }
     }
     return result;
-  }, [search, rawData]);
+  }, [rawData]);
+
+  // 2.b. Filtrado para Vista (Depende de la búsqueda)
+  // Usamos 'allPokemonFlat' como base y filtramos según lo que escribas.
+  const fullFilteredList = useMemo(() => {
+    const term = search.toLowerCase();
+
+    // Si no hay búsqueda, mostramos todo
+    if (!term) return allPokemonFlat;
+
+    return allPokemonFlat.filter((item) =>
+      item.name.toLowerCase().includes(term) ||
+      item.id.toString().includes(term)
+    );
+  }, [search, allPokemonFlat]);
 
   // 3. Recorte visible
   const visibleList = useMemo(() => {
@@ -149,7 +157,7 @@ export default function Home() {
     setIsGeneratingPdf(true);
 
     // 1. Preparar datos
-    const itemsToExport = fullFilteredList
+    const itemsToExport = allPokemonFlat
       .filter((item) => selectedKeys.has(item.uniqKey))
       .map((item) => ({ ...item, tag: "Pokémon Fit" }));
 
