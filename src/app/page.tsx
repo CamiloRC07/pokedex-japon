@@ -260,13 +260,31 @@ export default function Home() {
     <main className="min-h-screen bg-gray-100 pb-32">
       {/* HEADER */}
       <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md px-4 py-3 shadow-sm border-b border-gray-200 text-gray-600">
-        <input
-          type="text"
-          placeholder="Buscar (Nombre o N°)..."
-          className="w-full p-3 rounded-xl bg-gray-100 text-lg border border-transparent focus:bg-white focus:border-blue-500 focus:ring-0 transition-all outline-none"
-          value={search}
-          onChange={handleSearchChange}
-        />
+        <div className="relative">
+          <input
+            id='searchBar'
+            type="text"
+            placeholder="Buscar (Nombre o N°)..."
+            className="w-full p-3 pr-10 rounded-xl bg-gray-100 text-lg border border-transparent focus:bg-white focus:border-blue-500 focus:ring-0 transition-all outline-none"
+            value={search}
+            onChange={handleSearchChange}
+          />
+          {/* Botón X para borrar (solo si hay texto) */}
+          {search && (
+            <span
+              onClick={() => {
+                setSearch('');
+                setVisibleCount(ITEMS_PER_PAGE); // Reseteamos paginación al borrar
+              }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer p-0.5 bg-gray-100 rounded-3xl"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
+            </span>
+          )}
+        </div>
+
         <div className="text-xs text-gray-400 mt-2 text-right">
           Mostrando {visibleList.length} de {fullFilteredList.length} Pokémon
         </div>
