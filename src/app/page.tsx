@@ -329,7 +329,7 @@ export default function Home() {
 
       {/* --- MODAL CONFIRMAR BORRADO --- */}
       {showClearModal && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-full transform transition-all scale-100">
             <h3 className="text-lg font-bold text-gray-900 mb-2">¿Limpiar carrito?</h3>
             <p className="text-gray-500 mb-6">
@@ -371,7 +371,7 @@ function PokemonCard({ item, isSelected, onToggle }: { item: DisplayCard; isSele
       <div className="relative aspect-square bg-gray-50 group">
         <div className="flex overflow-x-auto snap-x snap-mandatory w-full h-full scrollbar-hide">
           {item.images.map((imgSrc, idx) => (
-            <img key={idx} src={imgSrc} loading="lazy" alt={`${item.name} vista ${idx}`} className="w-full h-full object-contain flex-shrink-0 snap-center p-2 pointer-events-none" />
+            <img key={idx} src={imgSrc} loading="lazy" alt={`${item.name} vista ${idx}`} className="w-full h-full object-contain shrink-0 snap-center p-2 pointer-events-none" />
           ))}
         </div>
         {item.images.length > 1 && (
