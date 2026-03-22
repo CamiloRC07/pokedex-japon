@@ -249,7 +249,7 @@ export default function Home() {
       doc.text(`Tag: ${item.tag}`, 14, yPos + 5);
 
       // Variante
-      if (item.variantId > 0) {
+      if (item.variantId) {
         doc.text(`Variante: ${item.variantId}`, 14, yPos + 10);
       }
       doc.setTextColor(0);
@@ -451,7 +451,7 @@ function PokemonCard({ item, isSelected, onToggle }: { item: DisplayCard; isSele
         )}
       </div>
       <div className={`p-3 border-t relative transition-colors ${isSelected ? 'bg-blue-50 border-blue-100' : 'border-gray-50'}`}>
-        {item.variantId > 0 && (
+        {item.variantId && (
           <span className="absolute top-1 right-3 bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded border border-indigo-200">Var. {item.variantId}</span>
         )}
         <div className="flex justify-between items-baseline mb-1"><span className="text-xs font-bold text-gray-400">#{item.id}</span></div>
