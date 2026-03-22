@@ -369,8 +369,17 @@
       font-weight: 500;
     }
 
-    /* Badge novedad */
-    .badge {
+    /* Badge */
+    .badge-strip {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex-wrap: nowrap;
+    }
+    .badge-strip::-webkit-scrollbar { display: none; }
+
+    /* .badge {
       position: absolute;
       top: 10px;
       left: 10px;
@@ -381,17 +390,26 @@
       letter-spacing: .02em;
       text-transform: uppercase;
       z-index: 1;
-    }
+    } */
 
-    .badge--new {
-      background: var(--color-accent);
-      color: #fff;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-
-    .badge--out {
-      background: var(--color-surface-2);
-      color: var(--color-text-muted);
-    }
+    .badge--new     { background: var(--color-accent);  color: #fff; }
+    .badge--out     { background: var(--color-surface-2); color: var(--color-text-muted); }
+    .badge--sale    { background: #E8F0FE; color: #1A73E8; }
+    .badge--japan   { background: #FCE8E8; color: #C0392B; }
+    .badge--china   { background: #FEF3E2; color: #E67E22; }
+    .badge--default { background: var(--color-surface-2); color: var(--color-text-muted); }
 
     /* ============================================================
         CATEGORY CARDS (Landing)
@@ -504,7 +522,13 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       background: var(--color-surface);
-      border: 1.5px solid var(--color-border);
+      border: 0 solid var(--color-border);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .product-detail__main-img:hover {
+      /* outline: 1.5px solid var(--color-border); */
+      box-shadow: 0 0 0 3px var(--color-border);
     }
 
     .product-detail__main-img img {
@@ -555,6 +579,12 @@
       line-height: 1.2;
     }
 
+    .product-detail__sep {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .product-detail__price {
       font-size: 26px;
       font-weight: 700;
@@ -599,6 +629,25 @@
     /* ============================================================
         BUTTONS
     ============================================================ */
+    .share-btn {
+      border-radius: var(--radius-full);
+      padding: 10px;
+      line-height: 0;
+      background: transparent;
+      color: var(--color-text-muted);
+      outline: 1.5px solid var(--color-border);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .share-btn:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .share-btn:active {
+      transform: translateY(0);
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;

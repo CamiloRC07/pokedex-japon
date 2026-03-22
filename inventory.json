@@ -3,6 +3,7 @@
     "id": "001",
     "nombre": "Peluche Ejemplo",
     "descripcion": "Descripción corta del producto que aparece en la card.",
+    "badges": ["novedad", "japon"],
     "detalles": {
       "marca": "Marca",
       "alto": "30cm",

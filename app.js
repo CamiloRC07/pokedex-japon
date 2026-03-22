@@ -216,9 +216,14 @@ function renderProduct() {
         ${iconInstagram()} Consultar por este producto
       </button>
       <p class="text-sm text-muted" style="text-align:center;margin-top:8px;">
-        Copia el mensaje y pégalo en el chat de Instagram
+        Se copiará un mensaje · Pégalo al abrir el chat
       </p>`
   : `<button class="btn btn-primary btn-full" disabled>Sin stock</button>`;
+
+  const shareBtn = `
+  <button class="share-btn" id="js-share-btn">
+    ${iconShare()}
+  </button>`;
 
   return `
     <button class="back-btn" data-nav-back>
@@ -241,12 +246,14 @@ function renderProduct() {
 
       <!-- Info -->
       <div class="product-detail__info">
-        ${p.novedad ? '<span class="badge badge--new" style="position:static;display:inline-block;margin-bottom:4px;">Novedad</span>' : ''}
-        ${!p.stock  ? '<span class="badge badge--out"  style="position:static;display:inline-block;margin-bottom:4px;">Sin stock</span>' : ''}
+        ${renderBadges(p)}
 
         <h1 class="product-detail__name">${p.nombre}</h1>
 
-        <p class="product-detail__price">${formatPrice(p.precio, p.moneda)}</p>
+        <div class="product-detail__sep">
+          <p class="product-detail__price">${formatPrice(p.precio, p.moneda)}</p>
+          ${shareBtn}
+        </div>
 
         <p class="product-detail__desc">${p.descripcion}</p>
 
@@ -256,6 +263,7 @@ function renderProduct() {
           ${btnHTML}
         </div>
       </div>
+    ${renderRelated(p)}
     </div>
   `;
 }
@@ -304,14 +312,13 @@ function renderNotFound() {
 }
 
 /* ============================================================
-   CARD DE PRODUCTO (reutilizable)
+    CARD DE PRODUCTO (reutilizable)
 ============================================================ */
 function renderProductCard(p) {
-  const badge = p.novedad
-    ? `<span class="badge badge--new">Nuevo</span>`
-    : !p.stock
-    ? `<span class="badge badge--out">Agotado</span>`
+  const firstBadge = p.novedad ? `<span class="badge badge--new">Nuevo</span>`
+    : !p.stock ? `<span class="badge badge--out">Agotado</span>`
     : '';
+  const badge = firstBadge ? `<div style="position:absolute;top:10px;left:10px;z-index:1">${firstBadge}</div>` : '';
 
   const imgHTML = p.imagenes?.principal
     ? `<img class="product-card__img" src="${p.imagenes.principal}" alt="${escapeHtml(p.nombre)}" loading="lazy" />`
@@ -324,8 +331,8 @@ function renderProductCard(p) {
   return `
     <article class="product-card" data-nav-product="${p.id}" role="button" tabindex="0" aria-label="${escapeHtml(p.nombre)}">
       <div class="product-card__img-wrap">
-        ${badge}
-        ${imgHTML}
+      ${badge}
+      ${imgHTML}
       </div>
       <div class="product-card__body">
         <p class="product-card__name">${escapeHtml(p.nombre)}</p>
@@ -356,6 +363,14 @@ function attachViewEvents() {
       thumb.classList.add('active');
     });
   });
+
+  const shareBtn = main.querySelector('#js-share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      const p = inventory.find(prod => prod.id === state.product);
+      if (p) shareProduct(p);
+    });
+  }
 
   const igBtn = main.querySelector('#js-ig-btn');
   if (igBtn) {
@@ -518,6 +533,58 @@ function showToast(msg, duration = 2800) {
   toast._timer = setTimeout(() => toast.classList.remove('visible'), duration);
 }
 
+function renderBadges(p) {
+  const BADGE_MAP = {
+    novedad: { cls: 'badge--new',   label: 'Novedad' },
+    oferta:  { cls: 'badge--sale',  label: 'Oferta'  },
+    japon:   { cls: 'badge--japan', label: 'Japón'   },
+    china:   { cls: 'badge--china', label: 'China'   },
+  };
+
+  const badges = [...(p.badges ?? [])];
+  if (!p.stock) badges.unshift('agotado');
+
+  if (!badges.length) return '';
+
+  const items = badges.map(slug => {
+    if (slug === 'agotado') {
+      return `<span class="badge badge--out">Sin stock</span>`;
+    }
+    const b = BADGE_MAP[slug] ?? { cls: 'badge--default', label: capitalize(slug) };
+    return `<span class="badge ${b.cls}">${b.label}</span>`;
+  }).join('');
+
+  return `<div class="badge-strip">${items}</div>`;
+}
+
+async function shareProduct(p) {
+  const url = `${location.origin}${location.pathname}?producto=${p.id}`;
+  const data = { title: p.nombre, text: p.descripcion, url };
+
+  if (navigator.share) {
+    try { await navigator.share(data); } catch { /* cancelado */ }
+  } else {
+    await navigator.clipboard.writeText(url);
+    showToast('✓ Link copiado al portapapeles');
+  }
+}
+
+function renderRelated(p) {
+  const related = inventory
+    .filter(x => x.categoria === p.categoria && x.id !== p.id)
+    .slice(0, 8);
+  if (!related.length) return '';
+
+  return `
+    <hr class="divider" />
+    <div class="section-header">
+      <h2 class="section-header__title">Más en ${CATEGORIES[p.categoria]?.label ?? p.categoria}</h2>
+    </div>
+    <div class="novedades-strip">
+      ${related.map(r => renderProductCard(r)).join('')}
+    </div>`;
+}
+
 /* ============================================================
     ÍCONOS SVG inline
 ============================================================ */
@@ -527,6 +594,10 @@ function iconArrowLeft() {
 
 function iconInstagram() {
   return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
+}
+
+function iconShare() {
+  return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`;
 }
 
 /* ============================================================
