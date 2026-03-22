@@ -1,0 +1,95 @@
+[
+  {
+    "id": "001",
+    "nombre": "Peluche Ejemplo",
+    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "detalles": {
+      "marca": "Marca",
+      "alto": "30cm",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": ["tag1", "tag2"],
+    "precio": 12990,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": true,
+    "imagenes": {
+      "principal": "public/FIT/1/1_3.webp",
+      "galeria": [
+        "public/FIT/1/1_2.webp",
+        "public/FIT/1/1_1.webp",
+        "public/FIT/1/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "002",
+    "nombre": "Carta Ejemplo TCG",
+    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "detalles": {
+      "marca": "Marca",
+      "expansion": "Nombre expansión",
+      "rareza": "Rare",
+      "idioma": "Japonés"
+    },
+    "categoria": "tcg",
+    "tags": ["tag1", "tag2"],
+    "precio": 4990,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "imagenes": {
+      "principal": "productos/002-main.webp",
+      "galeria": [
+        "productos/002-b.webp"
+      ]
+    }
+  },
+  {
+    "id": "003",
+    "nombre": "Figura Ejemplo",
+    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "detalles": {
+      "marca": "Marca",
+      "alto": "15cm",
+      "material": "PVC",
+      "origen": "Japón"
+    },
+    "categoria": "figuras",
+    "tags": ["tag1", "tag2"],
+    "precio": 24990,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "imagenes": {
+      "principal": "productos/003-main.webp",
+      "galeria": [
+        "productos/003-b.webp",
+        "productos/003-c.webp"
+      ]
+    }
+  },
+  {
+    "id": "004",
+    "nombre": "Gachapon Ejemplo",
+    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "detalles": {
+      "marca": "Bandai",
+      "serie": "Nombre serie",
+      "alto": "6cm",
+      "origen": "Japón"
+    },
+    "categoria": "gachapon",
+    "tags": ["tag1", "tag2"],
+    "precio": 3990,
+    "moneda": "CLP",
+    "stock": false,
+    "novedad": false,
+    "imagenes": {
+      "principal": "productos/004-main.webp",
+      "galeria": []
+    }
+  }
+]
