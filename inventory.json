@@ -16,6 +16,8 @@
     "moneda": "CLP",
     "stock": true,
     "novedad": true,
+    "destacado": false,
+    "colecciones": ["pokemon-fit"],
     "imagenes": {
       "principal": "public/FIT/1/1_3.webp",
       "galeria": [
