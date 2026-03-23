@@ -54,7 +54,7 @@ const CONFIG = {
 
   colecciones: [
     { slug: 'edicion-limitada', nombre: 'Edición Limitada', cover: null },
-    { slug: 'pokemon-fit',      nombre: 'Pokémon Fit',           cover: null },
+    { slug: 'pokemon-fit',      nombre: 'Pokémon Fit',       cover: null },
   ],
 
   faqs: [
@@ -571,6 +571,7 @@ function renderProductCard(p) {
       <div class="product-card__img-wrap">
       ${badge}
       ${imgHTML}
+      <span class="product-card__quick">Ver producto</span>
       </div>
       <div class="product-card__body">
         <p class="product-card__name">${escapeHtml(p.nombre)}</p>
@@ -851,7 +852,7 @@ function showToast(msg, duration = 2800) {
 
 function renderBadges(p) {
   const BADGE_MAP = {
-    novedad: { cls: 'badge--new',   label: 'Novedad' },
+    novedad: { cls: 'badge--new',   label: 'Nuevo' },
     oferta:  { cls: 'badge--sale',  label: 'Oferta'  },
     japon:   { cls: 'badge--japan', label: 'Japón'   },
     china:   { cls: 'badge--china', label: 'China'   },
