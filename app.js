@@ -1,11 +1,19 @@
 /* ============================================================
     CONFIGURACIÓN — edita estos valores
 ============================================================ */
+
+const novedadesSlug  = 'novedades';
+const destacadosSlug = 'destacados';
+
 const CONFIG = {
   storeName:    'Yanmega Ofertas',
   instagramUser: 'yanmegaofertas',
   currency:     'CLP',
   inventoryUrl: 'inventory.json',
+  encargosUrl: 'encargos.json',
+  landingMaxDestacados: 8,
+  landingMaxNovedades: 8,
+  landingMaxColecciones: 4,
   delivery: [
     {
       icon: 'package',
@@ -53,6 +61,8 @@ const CONFIG = {
   },
 
   colecciones: [
+    { slug: novedadesSlug, nombre: 'Novedades', cover: null },
+    { slug: destacadosSlug, nombre: 'Destacados', cover: null },
     { slug: 'edicion-limitada', nombre: 'Edición Limitada', cover: null },
     { slug: 'pokemon-fit',      nombre: 'Pokémon Fit',       cover: null },
   ],
@@ -121,6 +131,7 @@ function navigate(view, params = {}, pushHistory = true) {
   if (view === 'search')   url = `/?buscar=${encodeURIComponent(state.query)}`;
   if (view === 'info')     url = '/?info=true';
   if (view === 'coleccion') url = `/?coleccion=${state.cat}`;
+  if (view === 'colecciones') url = '/?colecciones=true';
 
   if (pushHistory) history.pushState({ view, ...params }, '', url);
 
@@ -163,6 +174,7 @@ function render() {
     case 'search':    html = renderSearch();    break;
     case 'info':      html = renderInfo();      break;
     case 'coleccion': html = renderColeccion(); break;
+    case 'colecciones': html = renderColecciones(); break;
     default:          html = renderLanding();
   }
 
@@ -176,8 +188,25 @@ function render() {
 function renderLanding() {
   document.title = CONFIG.storeName;
 
-  const novedades  = inventory.filter(p => p.novedad    && p.stock);
-  const destacados = inventory.filter(p => p.destacado  && p.stock);
+  const novedades  = inventory
+    .filter(p => p.novedad    && p.stock)
+    .slice(0, CONFIG.landingMaxNovedades - 1);
+  const destacados = inventory
+    .filter(p => p.destacado  && p.stock)
+    .slice(0, CONFIG.landingMaxDestacados - 1);
+
+  const colecciones = CONFIG.colecciones
+    .filter(col => ! [novedadesSlug, destacadosSlug].includes(col.slug))
+    .slice(0, CONFIG.landingMaxColecciones - 1);
+
+  const novedadesCards  = [
+    renderVerTodasCard('Ver todo', novedadesSlug),
+    ...novedades.map(p => renderProductCard(p)),
+  ].join('');
+  const destacadosCards  = [
+    renderVerTodasCard('Ver todo', destacadosSlug),
+    ...destacados.map(p => renderProductCard(p)),
+  ].join('');
 
   const heroHTML = `
     <div class="hero-strip">
@@ -190,8 +219,8 @@ function renderLanding() {
     <div class="section-header">
       <h2 class="section-header__title">Destacados</h2>
     </div>
-    <div class="destacados-grid">
-      ${destacados.map(p => renderProductCard(p)).join('')}
+    <div class="novedades-strip">
+      ${destacadosCards}
     </div>
     <hr class="divider" />` : '';
 
@@ -200,7 +229,7 @@ function renderLanding() {
       <h2 class="section-header__title">Novedades</h2>
     </div>
     <div class="novedades-strip">
-      ${novedades.map(p => renderProductCard(p)).join('')}
+      ${novedadesCards}
     </div>
     <hr class="divider" />` : '';
 
@@ -237,22 +266,24 @@ function renderLanding() {
       <h2 class="section-header__title">Colecciones</h2>
     </div>
     <div class="colecciones-grid">
-      ${CONFIG.colecciones.map(col => {
-        const count = inventory.filter(p =>
-          (p.colecciones ?? []).includes(col.slug)
-        ).length;
-        const coverHTML = col.cover
-          ? `<img src="${col.cover}" alt="${escapeHtml(col.nombre)}" loading="lazy" />`
-          : `<div class="coleccion-card__cover-placeholder">${iconByName('layers')}</div>`;
-        return `
-          <div class="coleccion-card" data-nav-coleccion="${col.slug}">
-            <div class="coleccion-card__cover">${coverHTML}</div>
-            <div class="coleccion-card__body">
-              <p class="coleccion-card__name">${escapeHtml(col.nombre)}</p>
-              <p class="coleccion-card__count">${count} producto${count !== 1 ? 's' : ''}</p>
-            </div>
-          </div>`;
-      }).join('')}
+      ${colecciones
+        .map(col => {
+          const count = inventory
+          .filter(p => (p.colecciones ?? []).includes(col.slug))
+          .length;
+          const coverHTML = col.cover
+            ? `<img src="${col.cover}" alt="${escapeHtml(col.nombre)}" loading="lazy" />`
+            : `<div class="coleccion-card__cover-placeholder">${iconByName('layers')}</div>`;
+          return `
+            <div class="coleccion-card" data-nav-coleccion="${col.slug}">
+              <div class="coleccion-card__cover">${coverHTML}</div>
+              <div class="coleccion-card__body">
+                <p class="coleccion-card__name">${escapeHtml(col.nombre)}</p>
+                <p class="coleccion-card__count">${count} producto${count !== 1 ? 's' : ''}</p>
+              </div>
+            </div>`;
+        }).join('')}
+        ${renderVerTodasColecciones('Revisa todas las colecciones')}
     </div>
     <hr class="divider" />` : '';
 
@@ -595,18 +626,52 @@ function renderProductCard(p) {
     </article>`;
 }
 
+function renderVerTodasCard(label, dataVal) {
+  return `
+    <article class="product-card ver-todas-card"
+      data-nav-coleccion="${dataVal}"
+      role="button" tabindex="0" aria-label="${label}">
+      <div class="product-card__img-wrap ver-todas-card__img">
+        <div class="ver-todas-card__inner">
+          ${iconByName('grid-2x2')}
+        </div>
+      </div>
+      <div class="product-card__body">
+        <p class="product-card__name" style="color:var(--color-accent)">${label}</p>
+      </div>
+    </article>`;
+}
+
+function renderVerTodasColecciones(label) {
+  return `
+    <article class="coleccion-card ver-todas-card"
+      data-nav-colecciones
+      role="button" tabindex="0" aria-label="${label}">
+      <div class="coleccion-card__cover">
+        <div class="ver-todas-card__inner coleccion-card__cover-placeholder">
+          ${iconByName('grid-2x2')}
+        </div>
+      </div>
+      <div class="coleccion-card__body">
+        <p class="coleccion-card__name" style="color:var(--color-accent)">${label}</p>
+      </div>
+    </article>`;
+}
+
+
 /* ============================================================
     VISTA: COLECCION
 ============================================================ */
 function renderColeccion() {
-  document.title = `${col.nombre } — ${CONFIG.storeName}`;
-
   const col = CONFIG.colecciones.find(c => c.slug === state.cat);
   if (!col) return renderNotFound();
+  document.title = `${col.nombre } — ${CONFIG.storeName}`;
 
-  const productos = inventory.filter(p =>
-    (p.colecciones ?? []).includes(state.cat)
-  );
+  const productos =
+      col.slug === novedadesSlug  ? inventory.filter(p => p.novedad)
+    : col.slug === destacadosSlug ? inventory.filter(p => p.destacado)
+    : inventory.filter(p => (p.colecciones ?? []).includes(state.cat));
+
   const disponibles = productos.filter(p => p.stock);
   const agotados    = productos.filter(p => !p.stock);
   const todos       = [...disponibles, ...agotados];
@@ -629,6 +694,39 @@ function renderColeccion() {
     </div>
     ${gridHTML}
   `;
+}
+
+/* ============================================================
+    VISTA: COLECCIONES
+============================================================ */
+function renderColecciones() {
+  document.title = `Colecciones — ${CONFIG.storeName}`;
+
+  const cardsHTML = CONFIG.colecciones
+      .map(col => {
+        const count = inventory.filter(p =>
+          (p.colecciones ?? []).includes(col.slug)
+      ).length;
+    const coverHTML = col.cover
+      ? `<img src="${col.cover}" alt="${escapeHtml(col.nombre)}" loading="lazy" />`
+      : `<div class="coleccion-card__cover-placeholder">${iconByName('layers')}</div>`;
+    return `
+      <div class="coleccion-card" data-nav-coleccion="${col.slug}">
+        <div class="coleccion-card__cover">${coverHTML}</div>
+        <div class="coleccion-card__body">
+          <p class="coleccion-card__name">${escapeHtml(col.nombre)}</p>
+          <p class="coleccion-card__count">${count} producto${count !== 1 ? 's' : ''}</p>
+        </div>
+      </div>`;
+  }).join('');
+
+  return `
+    <button class="back-btn" data-nav-back>${iconArrowLeft()} Volver</button>
+    <div class="section-header">
+      <h2 class="section-header__title">Colecciones</h2>
+      <span class="section-header__count">${CONFIG.colecciones.length}</span>
+    </div>
+    <div class="colecciones-grid">${cardsHTML}</div>`;
 }
 
 /* ============================================================
@@ -706,6 +804,7 @@ function handleViewClick(e) {
   const landBtn = e.target.closest('[data-nav-landing]');
   const colBtn  = e.target.closest('[data-nav-coleccion]');
   const infoBtn = e.target.closest('[data-nav-info]');
+  const colsBtn    = e.target.closest('[data-nav-colecciones]');
 
   if (card)    navigate('product',  { product: card.dataset.navProduct });
   if (catBtn)  navigate('category', { cat: catBtn.dataset.navCat });
@@ -713,6 +812,7 @@ function handleViewClick(e) {
   if (landBtn) navigate('landing');
   if (colBtn) navigate('coleccion', { cat: colBtn.dataset.navColeccion });
   if (infoBtn) navigate('info');
+  if (colsBtn) navigate('colecciones');
 }
 
 /* ============================================================
@@ -833,6 +933,8 @@ function resolveInitialRoute() {
     navigate('info', {}, false);
   } else if (params.has('coleccion')) {
     navigate('coleccion', { cat: params.get('coleccion') }, false);
+  } else if (params.has('colecciones')) {
+    navigate('colecciones', {}, false);
   } else {
     navigate('landing', {}, false);
   }
@@ -893,7 +995,7 @@ function renderBadges(p) {
 
 async function shareProduct(p) {
   const url = `${location.origin}${location.pathname}?producto=${p.id}`;
-  const data = { title: p.nombre, text: p.descripcion, url };
+  const data = { title: p.nombre, text: 'Mira este maravilloso producto:', url };
 
   if (navigator.share) {
     try { await navigator.share(data); } catch { /* cancelado */ }
@@ -917,6 +1019,15 @@ function renderRelated(p) {
     <div class="novedades-strip">
       ${related.map(r => renderProductCard(r)).join('')}
     </div>`;
+}
+
+function resolveListadoProductos(titulo) {
+  if (titulo === 'Novedades')  return inventory.filter(p => p.novedad   && p.stock);
+  if (titulo === 'Destacados') return inventory.filter(p => p.destacado && p.stock);
+  // Colección por slug
+  const col = CONFIG.colecciones.find(c => c.slug === titulo);
+  if (col) return inventory.filter(p => (p.colecciones ?? []).includes(titulo));
+  return [];
 }
 
 /* ============================================================
@@ -977,6 +1088,8 @@ function iconByName(name) {
     'layers':       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
     'handshake':    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>`,
     'badge-dollar-sign': `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-dollar-sign-icon lucide-badge-dollar-sign"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>`,
+    'arrow-right': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`,
+    'grid-2x2':   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
     //
   };
   const svg = icons[name] ?? icons['package'];
