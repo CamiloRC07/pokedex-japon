@@ -1,21 +1,11 @@
 {
-  "name": "Pokedex Fit Japan",
-  "short_name": "Pokedex",
-  "description": "Mi colección de Pokemon Fit offline",
+  "name": "Yanmega Ofertas",
+  "short_name": "Yanmega",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "theme_color": "#769856",
   "icons": [
-    {
-      "src": "/192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    { "src": "public/240x240.png", "sizes": "240x240", "type": "image/png" }
   ]
 }

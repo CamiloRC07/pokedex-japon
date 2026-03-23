@@ -41,6 +41,7 @@
     "tags": ["tag1", "tag2"],
     "precio": 4990,
     "moneda": "CLP",
+    "destacado": true,
     "stock": true,
     "novedad": false,
     "imagenes": {

@@ -174,6 +174,8 @@ function render() {
     VISTA: LANDING
 ============================================================ */
 function renderLanding() {
+  document.title = CONFIG.storeName;
+
   const novedades  = inventory.filter(p => p.novedad    && p.stock);
   const destacados = inventory.filter(p => p.destacado  && p.stock);
 
@@ -295,6 +297,7 @@ function renderLanding() {
     VISTA: CATEGORÍA
 ============================================================ */
 function renderCategory() {
+  document.title = `${CATEGORIES[state.cat]?.label} — ${CONFIG.storeName}`;
   const cat = CATEGORIES[state.cat];
   const productos = inventory.filter(p => p.categoria === state.cat);
   const disponibles = productos.filter(p => p.stock);
@@ -327,6 +330,15 @@ function renderCategory() {
 function renderProduct() {
   const p = inventory.find(prod => prod.id === state.product);
   if (!p) return renderNotFound();
+
+  // Actualizar metadata dinámica
+  document.title = `${p.nombre} — ${CONFIG.storeName}`;
+  document.querySelector('meta[property="og:title"]')
+    ?.setAttribute('content', `${p.nombre} — ${CONFIG.storeName}`);
+  document.querySelector('meta[property="og:description"]')
+    ?.setAttribute('content', p.descripcion);
+  document.querySelector('meta[property="og:image"]')
+    ?.setAttribute('content', `${location.origin}${location.pathname}${p.imagenes.principal}`);
 
   const allImgs = [p.imagenes.principal, ...(p.imagenes.galeria ?? [])];
 
@@ -410,6 +422,7 @@ function renderProduct() {
     VISTA: BÚSQUEDA
 ============================================================ */
 function renderSearch() {
+  document.title = `Búsqueda: ${state.query} — ${CONFIG.storeName}`;
   const q = state.query.trim().toLowerCase();
   if (!q) return renderLanding();
 
@@ -439,6 +452,8 @@ function renderSearch() {
     VISTA: INFORMACION
 ============================================================ */
 function renderInfo() {
+  document.title = `Información — ${CONFIG.storeName}`;
+
   const sections = [
     { id: 'como-comprar',  label: '¿Cómo comprar?' },
     { id: 'entrega',       label: 'Entrega'         },
@@ -584,6 +599,8 @@ function renderProductCard(p) {
     VISTA: COLECCION
 ============================================================ */
 function renderColeccion() {
+  document.title = `${col.nombre } — ${CONFIG.storeName}`;
+
   const col = CONFIG.colecciones.find(c => c.slug === state.cat);
   if (!col) return renderNotFound();
 
