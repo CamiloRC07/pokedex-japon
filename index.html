@@ -89,6 +89,8 @@
 
     ul, ol { list-style: none; }
 
+    strong { color: var(--color-accent); }
+
     /* ============================================================
         TYPOGRAPHY SCALE
     ============================================================ */
@@ -1209,6 +1211,13 @@
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 48px;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .info-strip {
+        justify-content: space-between;
+      }
     }
 
     .info-strip__text {
@@ -1283,6 +1292,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
+      /* overflow-x: scroll; */
     }
 
     .encargos-chip {
@@ -1300,6 +1311,12 @@
     .encargos-chip svg {
       width: 13px;
       height: 13px;
+    }
+
+    @media (min-width: 640px) {
+      .encargos-card__meta {
+        justify-content: start;
+      }
     }
 
     /* ============================================================

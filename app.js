@@ -444,8 +444,8 @@ function renderProduct() {
           ${btnHTML}
         </div>
       </div>
-    ${renderRelated(p)}
     </div>
+    ${renderRelated(p)}
   `;
 }
 
