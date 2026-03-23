@@ -1,21 +1,21 @@
 [
   {
-    "id": "001",
-    "nombre": "Peluche Ejemplo",
-    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "id": "bulbasaur-fit",
+    "nombre": "Bulbasaur Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
     "badges": ["novedad", "japon"],
     "detalles": {
-      "marca": "Marca",
-      "alto": "30cm",
+      "marca": "Pokémon Center Original",
+      "alto": "15cm",
       "material": "Poliéster",
       "origen": "Japón"
     },
     "categoria": "peluches",
-    "tags": ["tag1", "tag2"],
-    "precio": 12990,
+    "tags": ["kanto", "planta", "veneno"],
+    "precio": 24000,
     "moneda": "CLP",
     "stock": true,
-    "novedad": true,
+    "novedad": false,
     "destacado": false,
     "colecciones": ["pokemon-fit"],
     "imagenes": {
@@ -24,6 +24,34 @@
         "public/FIT/1/1_2.webp",
         "public/FIT/1/1_1.webp",
         "public/FIT/1/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "venusaur-fit",
+    "nombre": "Venusaur Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": ["novedad", "japon"],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "15cm",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": ["kanto", "planta", "veneno"],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": ["pokemon-fit"],
+    "imagenes": {
+      "principal": "public/FIT/3/1_1.webp",
+      "galeria": [
+        "public/FIT/3/1_3.webp",
+        "public/FIT/3/1_4.webp",
+        "public/FIT/3/1_2.webp"
       ]
     }
   },
