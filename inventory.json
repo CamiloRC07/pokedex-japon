@@ -3,7 +3,10 @@
     "id": "bulbasaur-fit",
     "nombre": "Bulbasaur Fit",
     "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
-    "badges": ["novedad", "japon"],
+    "badges": [
+      "novedad",
+      "japon"
+    ],
     "detalles": {
       "marca": "Pokémon Center Original",
       "alto": "15cm",
@@ -11,13 +14,19 @@
       "origen": "Japón"
     },
     "categoria": "peluches",
-    "tags": ["kanto", "planta", "veneno"],
+    "tags": [
+      "kanto",
+      "planta",
+      "veneno"
+    ],
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
     "novedad": false,
     "destacado": false,
-    "colecciones": ["pokemon-fit"],
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
       "principal": "public/FIT/1/1_3.webp",
       "galeria": [
@@ -31,7 +40,9 @@
     "id": "venusaur-fit",
     "nombre": "Venusaur Fit",
     "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
-    "badges": ["novedad", "japon"],
+    "badges": [
+      "japon"
+    ],
     "detalles": {
       "marca": "Pokémon Center Original",
       "alto": "15cm",
@@ -39,13 +50,19 @@
       "origen": "Japón"
     },
     "categoria": "peluches",
-    "tags": ["kanto", "planta", "veneno"],
+    "tags": [
+      "kanto",
+      "planta",
+      "veneno"
+    ],
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
     "novedad": false,
     "destacado": false,
-    "colecciones": ["pokemon-fit"],
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
       "principal": "public/FIT/3/1_1.webp",
       "galeria": [
@@ -59,7 +76,9 @@
     "id": "charmander-fit",
     "nombre": "Charmander Fit",
     "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
-    "badges": ["novedad", "japon"],
+    "badges": [
+      "japon"
+    ],
     "detalles": {
       "marca": "Pokémon Center Original",
       "alto": "15cm",
@@ -67,13 +86,18 @@
       "origen": "Japón"
     },
     "categoria": "peluches",
-    "tags": ["kanto", "planta", "veneno"],
+    "tags": [
+      "kanto",
+      "fuego"
+    ],
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
     "novedad": false,
     "destacado": true,
-    "colecciones": ["pokemon-fit"],
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
       "principal": "public/FIT/4/1_3.webp",
       "galeria": [
@@ -84,72 +108,411 @@
     }
   },
   {
-    "id": "002",
-    "nombre": "Carta Ejemplo TCG",
-    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "id": "charizard-fit",
+    "nombre": "Charizard Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
     "detalles": {
-      "marca": "Marca",
-      "expansion": "Nombre expansión",
-      "rareza": "Rare",
-      "idioma": "Japonés"
+      "marca": "Pokémon Center Original",
+      "alto": "16cm",
+      "material": "Poliéster",
+      "origen": "Japón"
     },
-    "categoria": "tcg",
-    "tags": ["tag1", "tag2"],
-    "precio": 4990,
+    "categoria": "peluches",
+    "tags": [
+      "fuego",
+      "volador"
+    ],
+    "precio": 24000,
     "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/6/1_3.webp",
+      "galeria": [
+        "public/FIT/6/1_1.webp",
+        "public/FIT/6/1_3.webp",
+        "public/FIT/6/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "squirtle-fit",
+    "nombre": "Squirtle Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "10cm",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "kanto",
+      "agua"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/7/1_2.webp",
+      "galeria": [
+        "public/FIT/7/1_4.webp",
+        "public/FIT/7/1_1.webp",
+        "public/FIT/7/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "rattata-fit",
+    "nombre": "Rattata Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "10cm",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "kanto",
+      "normal"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/19/2_1.webp",
+      "galeria": [
+        "public/FIT/19/2_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "nidoking-fit",
+    "nombre": "Nidoking Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "veneno",
+      "tierra"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/34/1_1.webp",
+      "galeria": [
+        "public/FIT/34/1_2.webp",
+        "public/FIT/34/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "vulpix-de-alola-fit",
+    "nombre": "Vulpix de Alola Fit",
+    "descripcion": "¡Los Pokémon de la región de Alola de <strong><em>Pokémon Sol y Luna</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡trae el espíritu tropical y festivo de las islas a la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hielo",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/37/1_4.webp",
+      "galeria": [
+        "public/FIT/37/1_3.webp",
+        "public/FIT/37/1_2.webp",
+        "public/FIT/37/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "ninetales-de-alola-fit",
+    "nombre": "Ninetales de Alola Fit",
+    "descripcion": "¡Los Pokémon de la región de Alola de <strong><em>Pokémon Sol y Luna</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡trae el espíritu tropical y festivo de las islas a la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hielo",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/38/1_4.webp",
+      "galeria": [
+        "public/FIT/38/1_5.webp",
+        "public/FIT/38/1_1.webp",
+        "public/FIT/38/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "vileplume-fit",
+    "nombre": "Vileplume Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta",
+      "veneno"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
     "destacado": true,
-    "stock": true,
-    "novedad": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
-      "principal": "productos/002-main.webp",
+      "principal": "public/FIT/45/1_1.webp",
       "galeria": [
-        "productos/002-b.webp"
+        "public/FIT/45/1_2.webp"
       ]
     }
   },
   {
-    "id": "003",
-    "nombre": "Figura Ejemplo",
-    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "id": "diglett",
+    "nombre": "Diglett",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
     "detalles": {
-      "marca": "Marca",
-      "alto": "15cm",
-      "material": "PVC",
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
       "origen": "Japón"
     },
-    "categoria": "figuras",
-    "tags": ["tag1", "tag2"],
-    "precio": 24990,
+    "categoria": "peluches",
+    "tags": [
+      "tierra"
+    ],
+    "precio": 24000,
     "moneda": "CLP",
     "stock": true,
     "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
-      "principal": "productos/003-main.webp",
+      "principal": "public/FIT/50/2_1.webp",
       "galeria": [
-        "productos/003-b.webp",
-        "productos/003-c.webp"
+        "public/FIT/50/2_4.webp",
+        "public/FIT/50/2_2.webp",
+        "public/FIT/50/2_3.webp"
       ]
     }
   },
   {
-    "id": "004",
-    "nombre": "Gachapon Ejemplo",
-    "descripcion": "Descripción corta del producto que aparece en la card.",
+    "id": "arcanine-fit",
+    "nombre": "Arcanine Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
     "detalles": {
-      "marca": "Bandai",
-      "serie": "Nombre serie",
-      "alto": "6cm",
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
       "origen": "Japón"
     },
-    "categoria": "gachapon",
-    "tags": ["tag1", "tag2"],
-    "precio": 3990,
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
     "moneda": "CLP",
-    "stock": false,
+    "stock": true,
     "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
     "imagenes": {
-      "principal": "productos/004-main.webp",
-      "galeria": []
+      "principal": "public/FIT/59/1_1.webp",
+      "galeria": [
+        "public/FIT/59/1_2.webp",
+        "public/FIT/59/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "alakazam-fit",
+    "nombre": "Alakazam Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/65/1_2.webp",
+      "galeria": [
+        "public/FIT/65/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "geodude-fit",
+    "nombre": "Geodude Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "tierra",
+      "roca"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/74/2_2.webp",
+      "galeria": [
+        "public/FIT/74/2_3.webp",
+        "public/FIT/74/2_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "haunter-fit",
+    "nombre": "Haunter Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fantasma",
+      "veneno"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/93/1_1.webp",
+      "galeria": [
+        "public/FIT/93/1_4.webp",
+        "public/FIT/93/1_3.webp",
+        "public/FIT/93/1_2.webp"
+      ]
     }
   }
 ]
