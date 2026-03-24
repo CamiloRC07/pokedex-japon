@@ -69,7 +69,7 @@ const CONFIG = {
 
   faqs: [
     { q: '¿Cómo funciona un encargo?',       r: 'Nos escribes por Instagram con el producto que buscas, cotizamos el precio final con envío desde Japón y pagas un adelanto del 50%. El resto lo pagas cuando el producto llega a Chile.' },
-    { q: '¿Cuánto demora un encargo',               r: 'Entre 4 y 8 semanas dependiendo del producto y la disponibilidad en Japón.' },
+    { q: '¿Cuánto demora un encargo?',               r: 'Entre 4 y 8 semanas dependiendo del producto y la disponibilidad en Japón.' },
     { q: '¿Aceptan reservas de productos del inventario?', r: 'Sí, con un abono del 50%. Escríbenos por Instagram para coordinar.' },
     { q: '¿Qué pasa si el producto llega dañado?',      r: 'Revisamos cada producto antes de enviarlo. Si llega con daños de transporte, coordina con nosotros por Instagram.' },
     { q: '¿Cuánto demora el despacho?',          r: 'Starken y Blue Express demoran 2 a 4 días hábiles. Paket entrega al día siguiente en Santiago para compras de lunes a jueves.' },
