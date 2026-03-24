@@ -348,8 +348,8 @@
     }
   },
   {
-    "id": "diglett",
-    "nombre": "Diglett",
+    "id": "diglett-fit",
+    "nombre": "Diglett Fit",
     "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
     "badges": [
       "japon"
@@ -512,6 +512,1474 @@
         "public/FIT/93/1_4.webp",
         "public/FIT/93/1_3.webp",
         "public/FIT/93/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "gyarados-fit",
+    "nombre": "Gyarados Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua",
+      "volador"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/130/1_3.webp",
+      "galeria": [
+        "public/FIT/130/1_4.webp",
+        "public/FIT/130/1_1.webp",
+        "public/FIT/130/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "lapras-fit",
+    "nombre": "Lapras Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua",
+      "hielo"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/131/1_4.webp",
+      "galeria": [
+        "public/FIT/131/1_3.webp",
+        "public/FIT/131/1_2.webp",
+        "public/FIT/131/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "vaporeon-fit",
+    "nombre": "Vaporeon Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/134/1_2.webp",
+      "galeria": [
+        "public/FIT/134/1_1.webp",
+        "public/FIT/134/1_3.webp",
+        "public/FIT/134/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "jolteon-fit",
+    "nombre": "Jolteon Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/135/1_2.webp",
+      "galeria": [
+        "public/FIT/135/1_4.webp",
+        "public/FIT/135/1_1.webp",
+        "public/FIT/135/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "flareon-fit",
+    "nombre": "Flareon Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/136/1_2.webp",
+      "galeria": [
+        "public/FIT/136/1_3.webp",
+        "public/FIT/136/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "articuno-fit",
+    "nombre": "Articuno Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hielo",
+      "volador"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/144/1_2.webp",
+      "galeria": [
+        "public/FIT/144/1_1.webp",
+        "public/FIT/144/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "moltres-fit",
+    "nombre": "Moltres Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego",
+      "volador"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/146/1_2.webp",
+      "galeria": [
+        "public/FIT/146/1_4.webp",
+        "public/FIT/146/1_1.webp",
+        "public/FIT/146/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "cyndaquil-fit",
+    "nombre": "Cyndaquil Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/155/1_4.webp",
+      "galeria": [
+        "public/FIT/155/1_1.webp",
+        "public/FIT/155/1_2.webp",
+        "public/FIT/155/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "totodile-fit",
+    "nombre": "Totodile Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/158/1_2.webp",
+      "galeria": [
+        "public/FIT/158/1_3.webp",
+        "public/FIT/158/1_4.webp",
+        "public/FIT/158/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "furret-fit",
+    "nombre": "Furret Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "normal"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/162/1_2.webp",
+      "galeria": [
+        "public/FIT/162/1_1.webp",
+        "public/FIT/162/1_3.webp",
+        "public/FIT/162/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "togepi-fit",
+    "nombre": "Togepi Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/175/1_1.webp",
+      "galeria": [
+        "public/FIT/175/1_2.webp",
+        "public/FIT/175/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "ampharos-fit",
+    "nombre": "Ampharos Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": false,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/181/1_2.webp",
+      "galeria": [
+        "public/FIT/181/1_1.webp",
+        "public/FIT/181/1_3.webp",
+        "public/FIT/181/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "bellossom-fit",
+    "nombre": "Bellossom Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/182/1_2.webp",
+      "galeria": [
+        "public/FIT/182/1_1.webp",
+        "public/FIT/182/1_3.webp",
+        "public/FIT/182/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "espeon-fit",
+    "nombre": "Espeon Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/196/1_1.webp",
+      "galeria": [
+        "public/FIT/196/1_2.webp",
+        "public/FIT/196/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "umbreon-fit",
+    "nombre": "Umbreon Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "siniestro"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/197/1_4.webp",
+      "galeria": [
+        "public/FIT/197/1_3.webp",
+        "public/FIT/197/1_2.webp",
+        "public/FIT/197/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "raikou-fit",
+    "nombre": "Raikou Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/243/1_1.webp",
+      "galeria": [
+        "public/FIT/243/1_2.webp",
+        "public/FIT/243/1_4.webp",
+        "public/FIT/243/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "lugia-fit",
+    "nombre": "Lugia Fit",
+    "descripcion": "¡Los Pokémon de la región de Johto de <strong><em>Pokémon Oro y Plata</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡el tamaño ideal para coleccionarlos a todos!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "volador"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/249/1_3.webp",
+      "galeria": [
+        "public/FIT/249/1_1.webp",
+        "public/FIT/249/1_2.webp",
+        "public/FIT/249/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "torchic",
+    "nombre": "Torchic",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/255/1_4.webp",
+      "galeria": [
+        "public/FIT/255/1_3.webp",
+        "public/FIT/255/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "blaziken-fit",
+    "nombre": "Blaziken Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego",
+      "lucha"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/257/1_2.webp",
+      "galeria": [
+        "public/FIT/257/1_3.webp",
+        "public/FIT/257/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "zigzagoon-fit",
+    "nombre": "Zigzagoon Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "normal"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/263/1_6.webp",
+      "galeria": [
+        "public/FIT/263/1_7.webp",
+        "public/FIT/263/1_3.webp",
+        "public/FIT/263/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "ralts-fit",
+    "nombre": "Ralts Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/280/1_2.webp",
+      "galeria": [
+        "public/FIT/280/1_1.webp",
+        "public/FIT/280/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "kirlia-fit",
+    "nombre": "Kirlia Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/281/1_4.webp",
+      "galeria": [
+        "public/FIT/281/1_1.webp",
+        "public/FIT/281/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "gardevoir",
+    "nombre": "Gardevoir",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/282/1_5.webp",
+      "galeria": [
+        "public/FIT/282/1_1.webp",
+        "public/FIT/282/1_2.webp",
+        "public/FIT/282/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "plusle-fit",
+    "nombre": "Plusle Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/311/1_2.webp",
+      "galeria": [
+        "public/FIT/311/1_1.webp",
+        "public/FIT/311/1_3.webp"
+      ]
+    }
+  },
+  {
+    "id": "minun-fit",
+    "nombre": "Minun Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/312/1_1.webp",
+      "galeria": [
+        "public/FIT/312/1_3.webp",
+        "public/FIT/312/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "clamperl-fit",
+    "nombre": "Clamperl Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/366/1_4.webp",
+      "galeria": [
+        "public/FIT/366/1_1.webp",
+        "public/FIT/366/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "latias-fit",
+    "nombre": "Latias Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "dragon"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/380/1_3.webp",
+      "galeria": [
+        "public/FIT/380/1_1.webp",
+        "public/FIT/380/1_3.webp",
+        "public/FIT/380/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "latios-fit",
+    "nombre": "Latios Fit",
+    "descripcion": "¡Los Pokémon de la región de Hoenn de <strong><em>Pokémon Rubí y Zafiro</em></strong> están disponibles en la colección de peluches <strong>Pokémon Fit</strong>, ¡del tamaño perfecto para llevar en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "psiquico",
+      "dragon"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/381/1_2.webp",
+      "galeria": [
+        "public/FIT/381/1_3.webp",
+        "public/FIT/381/1_4.webp",
+        "public/FIT/380/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "torterra-fit",
+    "nombre": "Torterra Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta",
+      "tierra"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/389/1_2.webp",
+      "galeria": [
+        "public/FIT/389/1_1.webp",
+        "public/FIT/389/1_3.webp",
+        "public/FIT/389/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "riolu-fit",
+    "nombre": "Riolu Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "lucha"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/447/1_3.webp",
+      "galeria": [
+        "public/FIT/447/1_4.webp",
+        "public/FIT/447/1_1.webp",
+        "public/FIT/447/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "lucario-fit",
+    "nombre": "Lucario Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "lucha",
+      "acero"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/448/1_4.webp",
+      "galeria": [
+        "public/FIT/448/1_1.webp",
+        "public/FIT/448/1_3.webp",
+        "public/FIT/448/1_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "toxicroak-fit",
+    "nombre": "Toxicroak Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "veneno",
+      "lucha"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/454/1_2.webp",
+      "galeria": [
+        "public/FIT/454/1_1.webp",
+        "public/FIT/454/1_3.webp",
+        "public/FIT/454/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "togekiss-fit",
+    "nombre": "Togekiss Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hada",
+      "volador"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/468/1_1.webp",
+      "galeria": [
+        "public/FIT/468/1_2.webp",
+        "public/FIT/468/1_3.webp",
+        "public/FIT/468/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "leafeon-fit",
+    "nombre": "Leafeon Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/470/1_2.webp",
+      "galeria": [
+        "public/FIT/470/1_1.webp",
+        "public/FIT/470/1_3.webp",
+        "public/FIT/470/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "glaceon-fit",
+    "nombre": "Glaceon Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "hielo"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/471/1_2.webp",
+      "galeria": [
+        "public/FIT/471/1_1.webp",
+        "public/FIT/471/1_3.webp",
+        "public/FIT/471/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "darkrai-fit",
+    "nombre": "Darkrai Fit",
+    "descripcion": "¡Los Pokémon de la región de Sinnoh de <strong><em>Pokémon Diamante y Perla</em></strong> ya llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡pequeños, coleccionables e irresistibles!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "siniestro"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/491/1_2.webp",
+      "galeria": [
+        "public/FIT/491/1_1.webp",
+        "public/FIT/491/1_3.webp",
+        "public/FIT/491/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "whimsicott-fit",
+    "nombre": "Whimsicott Fit",
+    "descripcion": "¡Los Pokémon de la región de Unova de <strong><em>Pokémon Negro y Blanco</em></strong> llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡una generación inolvidable, ahora en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta",
+      "hada"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/547/1_4.webp",
+      "galeria": [
+        "public/FIT/547/1_3.webp",
+        "public/FIT/547/1_2.webp",
+        "public/FIT/547/1_5.webp"
+      ]
+    }
+  },
+  {
+    "id": "lilligant-fit",
+    "nombre": "Lilligant Fit",
+    "descripcion": "¡Los Pokémon de la región de Unova de <strong><em>Pokémon Negro y Blanco</em></strong> llegan a la colección de peluches <strong>Pokémon Fit</strong>, ¡una generación inolvidable, ahora en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "planta"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/549/1_5.webp",
+      "galeria": [
+        "public/FIT/549/1_2.webp",
+        "public/FIT/549/1_4.webp",
+        "public/FIT/549/1_6.webp"
+      ]
+    }
+  },
+  {
+    "id": "fennekin-fit",
+    "nombre": "Fennekin Fit",
+    "descripcion": "¡Los Pokémon de la región de Kalos de <strong><em>Pokémon X y Y</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡elegantes, modernos y listos para conquistar tu colección!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/653/1_3.webp",
+      "galeria": [
+        "public/FIT/653/1_1.webp",
+        "public/FIT/653/1_2.webp",
+        "public/FIT/653/1_4.webp"
+      ]
+    }
+  },
+  {
+    "id": "braixen-fit",
+    "nombre": "Braixen Fit",
+    "descripcion": "¡Los Pokémon de la región de Kalos de <strong><em>Pokémon X y Y</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡elegantes, modernos y listos para conquistar tu colección!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/654/1_4.webp",
+      "galeria": [
+        "public/FIT/654/1_1.webp",
+        "public/FIT/654/1_3.webp",
+        "public/FIT/654/1_5.webp"
+      ]
+    }
+  },
+  {
+    "id": "delphox-fit",
+    "nombre": "Delphox Fit",
+    "descripcion": "¡Los Pokémon de la región de Kalos de <strong><em>Pokémon X y Y</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡elegantes, modernos y listos para conquistar tu colección!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "fuego",
+      "psiquico"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/655/1_2.webp",
+      "galeria": [
+        "public/FIT/655/1_1.webp",
+        "public/FIT/655/1_3.webp",
+        "public/FIT/655/1_5.webp"
+      ]
+    }
+  },
+  {
+    "id": "froakie-fit",
+    "nombre": "Froakie Fit",
+    "descripcion": "¡Los Pokémon de la región de Kalos de <strong><em>Pokémon X y Y</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡elegantes, modernos y listos para conquistar tu colección!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "agua"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/656/1_3.webp",
+      "galeria": [
+        "public/FIT/656/1_4.webp",
+        "public/FIT/656/1_2.webp",
+        "public/FIT/656/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "furfrou-dama-fit",
+    "nombre": "Furfrou · Dama Fit",
+    "descripcion": "¡Los Pokémon de la región de Kalos de <strong><em>Pokémon X y Y</em></strong> se unen a la colección de peluches <strong>Pokémon Fit</strong>, ¡elegantes, modernos y listos para conquistar tu colección!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "alto": "",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "normal"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/676/9_1.webp",
+      "galeria": [
+        "public/FIT/676/9_3.webp",
+        "public/FIT/676/9_4.webp",
+        "public/FIT/676/9_5.webp"
       ]
     }
   }

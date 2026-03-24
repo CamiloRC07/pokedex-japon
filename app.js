@@ -955,6 +955,15 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function shuffle(array) {
+  const arrCopy = [...array];
+  for (let i = arrCopy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arrCopy[i], arrCopy[j]] = [arrCopy[j], arrCopy[i]];
+  }
+  return arrCopy;
+}
+
 function showToast(msg, duration = 2800) {
   let toast = document.getElementById('js-toast');
   if (!toast) {
@@ -1006,8 +1015,9 @@ async function shareProduct(p) {
 }
 
 function renderRelated(p) {
-  const related = inventory
-    .filter(x => x.categoria === p.categoria && x.id !== p.id)
+  const filtered = inventory
+    .filter(x => x.categoria === p.categoria && x.id !== p.id);
+  const related = shuffle(filtered)
     .slice(0, 8);
   if (!related.length) return '';
 
