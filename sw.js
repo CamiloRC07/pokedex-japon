@@ -44,8 +44,9 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(e.request)
         .then(res => {
+          const resClone = res.clone(); // ✅ clonar inmediatamente
           caches.open(JSON_CACHE).then(cache =>
-            cache.put(e.request, res.clone())
+            cache.put(e.request, resClone)
           );
           return res;
         })
