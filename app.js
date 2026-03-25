@@ -210,7 +210,7 @@ function renderLanding() {
 
   const heroHTML = `
     <div class="hero-strip">
-      <p class="hero-strip__eyebrow">Bienvenido a</p>
+      <p class="hero-strip__eyebrow">gracias por visitar a</p>
       <h1 class="hero-strip__title">${CONFIG.storeName}</h1>
       <p class="hero-strip__sub">Encuentra peluches, figuras, TCG y más.</p>
     </div>`;
@@ -338,7 +338,7 @@ function renderCategory() {
   const gridHTML = todos.length
     ? `<div class="product-grid">${todos.map(p => renderProductCard(p)).join('')}</div>`
     : `<div class="empty-state">
-        <div class="empty-state__icon">${'📦'}</div>
+        <div class="empty-state__icon">📦</div>
         <p class="empty-state__title">Sin productos aún</p>
         <p class="empty-state__text">Pronto habrá novedades en esta categoría.</p>
       </div>`;
