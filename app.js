@@ -64,7 +64,7 @@ const CONFIG = {
     { slug: novedadesSlug, nombre: 'Novedades', cover: null },
     { slug: destacadosSlug, nombre: 'Destacados', cover: null },
     { slug: 'edicion-limitada', nombre: 'Edición Limitada', cover: null },
-    { slug: 'pokemon-fit',      nombre: 'Pokémon Fit',       cover: null },
+    { slug: 'pokemon-fit',      nombre: 'Pokémon Fit',       cover: 'public/COLLECTIONS/pokemon-fit.webp' },
   ],
 
   faqs: [
@@ -75,7 +75,33 @@ const CONFIG = {
     { q: '¿Cuánto demora el despacho?',          r: 'Starken y Blue Express demoran 2 a 4 días hábiles. Paket entrega al día siguiente en Santiago para compras de lunes a jueves.' },
     { q: '¿Puedo pagar en cuotas?',          r: 'Por ahora solo aceptamos transferencia bancaria. Pronto habilitaremos más métodos de pago.' },
   ],
+
+  // Tags y badges que NO se muestran como chips de filtro en la grilla.
+  gridHiddenTags:   ['kanto'],
+  gridHiddenBadges: [],
 };
+
+const tags = {
+  "acero": 'Acero',
+    "agua": 'Agua',
+    "bicho": 'Bicho',
+    "dragon": 'Dragón',
+    "electrico": 'Eléctrico',
+    "fantasma": 'Fantasma',
+    "fuego": 'Fuego',
+    "hada": 'Hada',
+    "hielo": 'Hielo',
+    "kanto": 'Kanto',
+    "lucha": 'Lucha',
+    "normal": 'Normal',
+    "planta": 'Planta',
+    "psiquico": 'Psíquico',
+    "roca": 'Roca',
+    "siniestro": 'Siniestro',
+    "tierra": 'Tierra',
+    "veneno": 'Veneno',
+    "volador": 'Volador'
+}
 
 /* ============================================================
     CATEGORÍAS
@@ -166,19 +192,51 @@ function updateCategoryNav(activeCat) {
 function render() {
   const main = document.getElementById('js-main');
   let html = '';
+  let gridProductos = null;
 
   switch (state.view) {
     case 'landing':   html = renderLanding();   break;
-    case 'category':  html = renderCategory();  break;
+    case 'category': {
+      const prods = inventory.filter(p => p.categoria === state.cat);
+      gridProductos = [...prods.filter(p => p.stock), ...prods.filter(p => !p.stock)];
+      html = renderCategory();
+      break;
+    }
     case 'product':   html = renderProduct();   break;
-    case 'search':    html = renderSearch();    break;
+    case 'search': {
+      const q = state.query.trim().toLowerCase();
+      gridProductos = q.length >= 2
+        ? inventory.filter(p =>
+            p.nombre.toLowerCase().includes(q) ||
+            (p.tags ?? []).some(t => t.toLowerCase().includes(q)))
+        : [];
+      html = renderSearch();
+      break;
+    }
     case 'info':      html = renderInfo();      break;
-    case 'coleccion': html = renderColeccion(); break;
+    case 'coleccion': {
+      const col = CONFIG.colecciones.find(c => c.slug === state.cat);
+      if (col) {
+        const prods =
+            col.slug === novedadesSlug  ? inventory.filter(p => p.novedad)
+          : col.slug === destacadosSlug ? inventory.filter(p => p.destacado)
+          : inventory.filter(p => (p.colecciones ?? []).includes(state.cat));
+        gridProductos = [...prods.filter(p => p.stock), ...prods.filter(p => !p.stock)];
+      }
+      html = renderColeccion();
+      break;
+    }
     case 'colecciones': html = renderColecciones(); break;
     default:          html = renderLanding();
   }
 
   main.innerHTML = `<div class="container view">${html}</div>`;
+
+  if (gridProductos !== null) {
+    const root = document.getElementById('js-product-grid-root');
+    if (root) root._productos = gridProductos;
+  }
+
   attachViewEvents();
 }
 
@@ -271,11 +329,12 @@ function renderLanding() {
           const count = inventory
           .filter(p => (p.colecciones ?? []).includes(col.slug))
           .length;
+          if (count === 0) return '';
           const coverHTML = col.cover
             ? `<img src="${col.cover}" alt="${escapeHtml(col.nombre)}" loading="lazy" />`
             : `<div class="coleccion-card__cover-placeholder">${iconByName('layers')}</div>`;
           return `
-            <div class="coleccion-card" data-nav-coleccion="${col.slug}">
+            <div class="coleccion-card" data-nav-coleccion="${col.slug}" title="Haz clic para ver todos los productos en categoría ${col.nombre}">
               <div class="coleccion-card__cover">${coverHTML}</div>
               <div class="coleccion-card__body">
                 <p class="coleccion-card__name">${escapeHtml(col.nombre)}</p>
@@ -292,7 +351,7 @@ function renderLanding() {
     .map(([slug, { label, icon }]) => {
       const count = inventory.filter(p => p.categoria === slug).length;
       return `
-        <button class="category-card" data-nav-cat="${slug}">
+        <button class="category-card" data-nav-cat="${slug}" title="Haz clic para ver todos los productos en ${label}">
           <span class="category-card__icon">${icon}</span>
           <span class="category-card__label">${label}</span>
           <span class="category-card__count">${count} producto${count !== 1 ? 's' : ''}</span>
@@ -335,14 +394,6 @@ function renderCategory() {
   const agotados    = productos.filter(p => !p.stock);
   const todos       = [...disponibles, ...agotados];
 
-  const gridHTML = todos.length
-    ? `<div class="product-grid">${todos.map(p => renderProductCard(p)).join('')}</div>`
-    : `<div class="empty-state">
-        <div class="empty-state__icon">📦</div>
-        <p class="empty-state__title">Sin productos aún</p>
-        <p class="empty-state__text">Pronto habrá novedades en esta categoría.</p>
-      </div>`;
-
   return `
     <button class="back-btn" data-nav-back>
       ${iconArrowLeft()} Volver
@@ -351,7 +402,7 @@ function renderCategory() {
       <h2 class="section-header__title">${cat?.icon ?? ''} ${cat?.label ?? state.cat}</h2>
       <span class="section-header__count">${todos.length} producto${todos.length !== 1 ? 's' : ''}</span>
     </div>
-    ${gridHTML}
+    ${renderProductGrid(todos, { emptyIcon: '📦', emptyTitle: 'Sin productos aún', emptyText: 'Pronto habrá novedades en esta categoría.' })}
   `;
 }
 
@@ -372,6 +423,17 @@ function renderProduct() {
     ?.setAttribute('content', `${location.origin}${location.pathname}${p.imagenes.principal}`);
 
   const allImgs = [p.imagenes.principal, ...(p.imagenes.galeria ?? [])];
+
+  const slidesHTML = allImgs.map((src, i) => `
+    <div class="gallery-slide" data-idx="${i}">
+      <img src="${src}" alt="${escapeHtml(p.nombre)} — vista ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}" />
+    </div>`).join('');
+
+  const dotsHTML = allImgs.length > 1
+    ? `<div class="gallery-dots" id="js-gallery-dots">
+        ${allImgs.map((_, i) => `<button class="gallery-dot ${i === 0 ? 'active' : ''}" data-dot="${i}" aria-label="Imagen ${i + 1}"></button>`).join('')}
+      </div>`
+    : '';
 
   const thumbsHTML = allImgs.length > 1
     ? `<div class="product-detail__thumbs">
@@ -415,12 +477,10 @@ function renderProduct() {
       <!-- Galería -->
       <div class="product-detail__gallery">
         <div class="product-detail__main-img">
-          <img
-            id="js-main-img"
-            src="${p.imagenes.principal}"
-            alt="${p.nombre}"
-            loading="eager"
-          />
+          <div class="gallery-track" id="js-gallery-track">
+            ${slidesHTML}
+          </div>
+          ${dotsHTML}
         </div>
         ${thumbsHTML}
       </div>
@@ -462,20 +522,17 @@ function renderSearch() {
     (p.tags ?? []).some(t => t.toLowerCase().includes(q))
   );
 
-  const gridHTML = results.length
-    ? `<div class="product-grid">${results.map(p => renderProductCard(p)).join('')}</div>`
-    : `<div class="empty-state">
-        <div class="empty-state__icon">🔍</div>
-        <p class="empty-state__title">Sin resultados</p>
-        <p class="empty-state__text">No encontramos productos para "<strong>${escapeHtml(state.query)}</strong>".</p>
-      </div>`;
-
   return `
     <p class="search-results-label">
       Resultados para <strong>"${escapeHtml(state.query)}"</strong>
       ${results.length ? `— ${results.length} producto${results.length !== 1 ? 's' : ''}` : ''}
     </p>
-    ${gridHTML}
+    ${renderProductGrid(results, {
+      emptyIcon: '🔍',
+      emptyTitle: 'Sin resultados',
+      emptyText: `No encontramos productos para "${escapeHtml(state.query)}".`,
+      showControls: false,
+    })}
   `;
 }
 
@@ -613,7 +670,7 @@ function renderProductCard(p) {
     : `<span class="product-card__out-of-stock">Sin stock</span>`;
 
   return `
-    <article class="product-card" data-nav-product="${p.id}" role="button" tabindex="0" aria-label="${escapeHtml(p.nombre)}">
+    <article class="product-card" data-nav-product="${p.id}" role="button" tabindex="0" aria-label="${escapeHtml(p.nombre)}" title="Haz clic para ver ${p.nombre} en detalle">
       <div class="product-card__img-wrap">
       ${badge}
       ${imgHTML}
@@ -626,9 +683,239 @@ function renderProductCard(p) {
     </article>`;
 }
 
+const PAGE_SIZE = 100;
+
+// Estado de la grilla — se resetea en cada llamada a renderProductGrid
+const gridState = {
+  sort:          'default',  // 'default' | 'price-asc' | 'price-desc' | 'name-asc'
+  onlyStock:     false,
+  activeBadge:   null,       // slug de badge activo o null
+  activeTag:     null,       // tag activo o null
+  page:          1,
+};
+
+function renderProductGrid(productos, {
+  emptyIcon  = '📦',
+  emptyTitle = 'Sin productos',
+  emptyText  = '',
+  showControls = true,
+} = {}) {
+  // Resetear estado al entrar a una vista nueva
+  gridState.sort        = 'default';
+  gridState.onlyStock   = false;
+  gridState.activeBadge = null;
+  gridState.activeTag   = null;
+  gridState.page        = 1;
+
+  return buildProductGrid(productos, { emptyIcon, emptyTitle, emptyText, showControls });
+}
+
+function buildProductGrid(productos, { emptyIcon, emptyTitle, emptyText, showControls }) {
+  // --- Construir opciones de filtros desde los datos reales, respetando blacklist ---
+  const allBadges = [...new Set(
+    productos.flatMap(p => p.badges ?? [])
+  )].filter(b => b && !(CONFIG.gridHiddenBadges ?? []).includes(b));
+
+  const allTags = [...new Set(
+    productos.flatMap(p => p.tags ?? [])
+  )].filter(t => t && !(CONFIG.gridHiddenTags ?? []).includes(t)).sort();
+
+  // --- Aplicar filtros ---
+  let filtered = [...productos];
+
+  if (gridState.onlyStock)   filtered = filtered.filter(p => p.stock);
+  if (gridState.activeBadge) filtered = filtered.filter(p => (p.badges ?? []).includes(gridState.activeBadge));
+  if (gridState.activeTag)   filtered = filtered.filter(p => (p.tags   ?? []).includes(gridState.activeTag));
+
+  // --- Ordenar ---
+  if (gridState.sort === 'price-asc')  filtered.sort((a, b) => a.precio - b.precio);
+  if (gridState.sort === 'price-desc') filtered.sort((a, b) => b.precio - a.precio);
+  if (gridState.sort === 'name-asc')   filtered.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+  // --- Paginación ---
+  const total   = filtered.length;
+  const visible = filtered;
+  // const visible = filtered.slice(0, gridState.page * PAGE_SIZE);
+  const hasMore = visible.length < total;
+
+  // --- Controles HTML ---
+  const BADGE_LABELS = { novedad: 'Nuevo', oferta: 'Oferta', japon: 'Japón', china: 'China' };
+
+  const SORT_OPTIONS = [
+    { value: 'default',    label: 'Recomendado'          },
+    { value: 'price-asc',  label: 'Precio: menor → mayor' },
+    { value: 'price-desc', label: 'Precio: mayor → menor' },
+    { value: 'name-asc',   label: 'Nombre A → Z'         },
+  ];
+  const activeSortLabel = SORT_OPTIONS.find(o => o.value === gridState.sort)?.label ?? 'Ordenar';
+
+  const controlsHTML = showControls ? `
+    <div class="grid-controls" id="js-grid-controls">
+
+      <div class="grid-controls__row">
+        <!-- Sort dropdown custom (desktop) / select nativo (mobile ≤768px) -->
+        <div class="sort-dropdown" id="js-sort-dropdown">
+
+          <!-- Trigger — visible siempre -->
+          <button class="sort-dropdown__trigger" id="js-sort-trigger" aria-haspopup="listbox" aria-expanded="false">
+            ${iconByName('arrow-up-down')}
+            <span class="sort-dropdown__label" id="js-sort-label">${activeSortLabel}</span>
+            <span class="sort-dropdown__chevron">${iconByName('chevron-down')}</span>
+          </button>
+
+          <!-- Panel flotante — solo desktop -->
+          <ul class="sort-dropdown__panel" id="js-sort-panel" role="listbox" aria-label="Ordenar productos">
+            ${SORT_OPTIONS.map(o => `
+              <li class="sort-dropdown__option ${gridState.sort === o.value ? 'active' : ''}"
+                  role="option"
+                  aria-selected="${gridState.sort === o.value}"
+                  data-sort-value="${o.value}">
+                <span class="sort-dropdown__option-check">${iconByName('check')}</span>
+                ${o.label}
+              </li>`).join('')}
+          </ul>
+
+          <!-- Select nativo oculto — solo mobile (≤768px) -->
+          <select class="sort-dropdown__native" id="js-grid-sort" aria-label="Ordenar productos">
+            ${SORT_OPTIONS.map(o => `
+              <option value="${o.value}" ${gridState.sort === o.value ? 'selected' : ''}>${o.label}</option>`).join('')}
+          </select>
+
+        </div>
+
+        <!-- Toggle solo disponibles -->
+        <label class="grid-controls__toggle" id="js-grid-stock-label">
+          <input type="checkbox" id="js-grid-stock" ${gridState.onlyStock ? 'checked' : ''} />
+          <span class="grid-controls__toggle-track"></span>
+          <span class="grid-controls__toggle-label">Solo disponibles</span>
+        </label>
+      </div>
+
+      ${allBadges.length ? `
+      <div class="grid-controls__chips" id="js-grid-badges">
+        <button class="grid-chip ${!gridState.activeBadge ? 'active' : ''}" data-badge="">Todos</button>
+        ${allBadges.map(b => `
+          <button class="grid-chip ${gridState.activeBadge === b ? 'active' : ''}" data-badge="${b}">
+            ${BADGE_LABELS[b] ?? capitalize(b)}
+          </button>`).join('')}
+      </div>` : ''}
+
+      ${allTags.length ? `
+      <div class="grid-controls__chips" id="js-grid-tags">
+        <button class="grid-tag-chip ${!gridState.activeTag ? 'active' : ''}" data-tag="">Todos</button>
+        ${allTags.map(t => `
+          <button class="grid-tag-chip ${gridState.activeTag === t ? 'active' : ''}" data-tag="${t}">
+            ${tags[escapeHtml(t)]}
+          </button>`).join('')}
+      </div>` : ''}
+
+    </div>` : '';
+
+  // --- Grid o empty state ---
+  const resultsCountHTML = showControls && total !== productos.length
+    ? `<p class="grid-results-count">${total} resultado${total !== 1 ? 's' : ''}</p>` : '';
+
+  const gridHTML = visible.length
+    ? `${resultsCountHTML}<div class="product-grid">${visible.map(p => renderProductCard(p)).join('')}</div>`
+    : `<div class="empty-state">
+        <div class="empty-state__icon">${emptyIcon}</div>
+        <p class="empty-state__title">${emptyTitle}</p>
+        <p class="empty-state__text">${emptyText}</p>
+      </div>`;
+
+  const loadMoreHTML = hasMore
+    ? `<div class="load-more-wrap">
+        <button class="btn btn-ghost load-more-btn" id="js-load-more"
+          data-total="${total}">
+          Ver más
+          <span class="load-more-btn__count">${visible.length} de ${total}</span>
+        </button>
+      </div>` : '';
+
+  // Guardar referencia a los datos para poder paginar sin re-render total
+  // Se almacena en un atributo del DOM tras el render
+  return `
+    <div class="product-grid-root" id="js-product-grid-root"
+      data-empty-icon="${encodeURIComponent(emptyIcon)}"
+      data-empty-title="${encodeURIComponent(emptyTitle)}"
+      data-empty-text="${encodeURIComponent(emptyText)}"
+      data-show-controls="${showControls}">
+      ${controlsHTML}
+      <div id="js-grid-content">
+        ${gridHTML}
+      </div>
+      ${loadMoreHTML}
+    </div>`;
+}
+
+// Refresca solo el contenido del grid (sin re-render de la vista entera)
+function refreshGridContent(productos) {
+  const root = document.getElementById('js-product-grid-root');
+  if (!root) return;
+
+  const emptyIcon  = decodeURIComponent(root.dataset.emptyIcon);
+  const emptyTitle = decodeURIComponent(root.dataset.emptyTitle);
+  const emptyText  = decodeURIComponent(root.dataset.emptyText);
+  const showControls = root.dataset.showControls !== 'false';
+
+  // Aplicar filtros y sort
+  let filtered = [...productos];
+  if (gridState.onlyStock)   filtered = filtered.filter(p => p.stock);
+  if (gridState.activeBadge) filtered = filtered.filter(p => (p.badges ?? []).includes(gridState.activeBadge));
+  if (gridState.activeTag)   filtered = filtered.filter(p => (p.tags   ?? []).includes(gridState.activeTag));
+  if (gridState.sort === 'price-asc')  filtered.sort((a, b) => a.precio - b.precio);
+  if (gridState.sort === 'price-desc') filtered.sort((a, b) => b.precio - a.precio);
+  if (gridState.sort === 'name-asc')   filtered.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+  const total   = filtered.length;
+  const visible = filtered;
+  // const visible = filtered.slice(0, gridState.page * PAGE_SIZE);
+  const hasMore = visible.length < total;
+
+  const resultsCountHTML = showControls && total !== productos.length
+    ? `<p class="grid-results-count">${total} resultado${total !== 1 ? 's' : ''}</p>` : '';
+
+  const gridHTML = visible.length
+    ? `${resultsCountHTML}<div class="product-grid">${visible.map(p => renderProductCard(p)).join('')}</div>`
+    : `<div class="empty-state">
+        <div class="empty-state__icon">${emptyIcon}</div>
+        <p class="empty-state__title">${emptyTitle}</p>
+        <p class="empty-state__text">${emptyText}</p>
+      </div>`;
+
+  document.getElementById('js-grid-content').innerHTML = gridHTML;
+  attachProductCardEvents();
+
+  // Actualizar botón "Cargar más"
+  const existingWrap = root.querySelector('.load-more-wrap');
+  if (hasMore) {
+    const newWrapHTML = `<div class="load-more-wrap">
+      <button class="btn btn-ghost load-more-btn" id="js-load-more">
+        Ver más
+        <span class="load-more-btn__count">${visible.length} de ${total}</span>
+      </button>
+    </div>`;
+    if (existingWrap) {
+      existingWrap.outerHTML = newWrapHTML;
+    } else {
+      root.insertAdjacentHTML('beforeend', newWrapHTML);
+    }
+  } else if (existingWrap) {
+    existingWrap.remove();
+  }
+
+  // Re-attachar el evento del botón (siempre tras manipular el DOM)
+  root.querySelector('#js-load-more')?.addEventListener('click', () => {
+    gridState.page++;
+    refreshGridContent(root._productos);
+  });
+}
+
+
 function renderVerTodasCard(label, dataVal) {
   return `
     <article class="product-card ver-todas-card"
+      title="Haz clic para ver más ${dataVal}"
       data-nav-coleccion="${dataVal}"
       role="button" tabindex="0" aria-label="${label}">
       <div class="product-card__img-wrap ver-todas-card__img">
@@ -645,6 +932,7 @@ function renderVerTodasCard(label, dataVal) {
 function renderVerTodasColecciones(label) {
   return `
     <article class="coleccion-card ver-todas-card"
+      title="Haz clic para ver todas las colecciones"
       data-nav-colecciones
       role="button" tabindex="0" aria-label="${label}">
       <div class="coleccion-card__cover">
@@ -676,14 +964,6 @@ function renderColeccion() {
   const agotados    = productos.filter(p => !p.stock);
   const todos       = [...disponibles, ...agotados];
 
-  const gridHTML = todos.length
-    ? `<div class="product-grid">${todos.map(p => renderProductCard(p)).join('')}</div>`
-    : `<div class="empty-state">
-        <div class="empty-state__icon">${iconByName('layers')}</div>
-        <p class="empty-state__title">Sin productos aún</p>
-        <p class="empty-state__text">Esta colección no tiene productos todavía.</p>
-        </div>`;
-
   return `
     <button class="back-btn" data-nav-back>
       ${iconArrowLeft()} Volver
@@ -692,7 +972,7 @@ function renderColeccion() {
       <h2 class="section-header__title">${escapeHtml(col.nombre)}</h2>
       <span class="section-header__count">${todos.length} producto${todos.length !== 1 ? 's' : ''}</span>
     </div>
-    ${gridHTML}
+    ${renderProductGrid(todos, { emptyIcon: iconByName('layers'), emptyTitle: 'Sin productos aún', emptyText: 'Esta colección no tiene productos todavía.' })}
   `;
 }
 
@@ -701,17 +981,21 @@ function renderColeccion() {
 ============================================================ */
 function renderColecciones() {
   document.title = `Colecciones — ${CONFIG.storeName}`;
+  let coleccionesCount = 0;
 
   const cardsHTML = CONFIG.colecciones
+      .filter(col => ! [novedadesSlug, destacadosSlug].includes(col.slug))
       .map(col => {
         const count = inventory.filter(p =>
           (p.colecciones ?? []).includes(col.slug)
       ).length;
+    if (count === 0) return '';
+    coleccionesCount++;
     const coverHTML = col.cover
       ? `<img src="${col.cover}" alt="${escapeHtml(col.nombre)}" loading="lazy" />`
       : `<div class="coleccion-card__cover-placeholder">${iconByName('layers')}</div>`;
     return `
-      <div class="coleccion-card" data-nav-coleccion="${col.slug}">
+      <div class="coleccion-card" data-nav-coleccion="${col.slug}" title="Haz clic para ver todos los productos de esta colección">
         <div class="coleccion-card__cover">${coverHTML}</div>
         <div class="coleccion-card__body">
           <p class="coleccion-card__name">${escapeHtml(col.nombre)}</p>
@@ -724,7 +1008,7 @@ function renderColecciones() {
     <button class="back-btn" data-nav-back>${iconArrowLeft()} Volver</button>
     <div class="section-header">
       <h2 class="section-header__title">Colecciones</h2>
-      <span class="section-header__count">${CONFIG.colecciones.length}</span>
+      <span class="section-header__count">${coleccionesCount}</span>
     </div>
     <div class="colecciones-grid">${cardsHTML}</div>`;
 }
@@ -741,7 +1025,6 @@ function attachViewEvents() {
     if (e.key === 'Enter' || e.key === ' ') handleViewClick(e);
   });
 
-  // Thumbnails en vista de producto
   main.querySelectorAll('.product-detail__thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {
       const src = thumb.dataset.thumb;
@@ -751,6 +1034,47 @@ function attachViewEvents() {
       thumb.classList.add('active');
     });
   });
+
+  const track = main.querySelector('#js-gallery-track');
+  if (track) {
+    const slides = [...track.querySelectorAll('.gallery-slide')];
+    const dots   = [...main.querySelectorAll('#js-gallery-dots .gallery-dot')];
+    const thumbs = [...main.querySelectorAll('.product-detail__thumb')];
+
+    // Función central: ir a un índice
+    function goToSlide(idx) {
+      slides[idx]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+
+  thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const idx = parseInt(thumb.dataset.idx, 10);
+        goToSlide(idx);
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+
+    // Dots → mueven el carrusel
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.dot, 10)));
+    });
+
+    // IntersectionObserver → actualiza dots y thumbnails al hacer swipe
+    if (slides.length > 1) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            const idx = parseInt(entry.target.dataset.idx, 10);
+            dots.forEach((d, i)   => d.classList.toggle('active', i === idx));
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
+          }
+        });
+      }, { root: track, threshold: 0.5 });
+
+      slides.forEach(slide => observer.observe(slide));
+    }
+  }
 
   const shareBtn = main.querySelector('#js-share-btn');
   if (shareBtn) {
@@ -793,6 +1117,163 @@ function attachViewEvents() {
       const isOpen = item.classList.contains('open');
       main.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Controles de la grilla
+  attachGridControls();
+}
+
+// Separa los eventos de la grilla para poder re-attacharlos tras refresh
+function attachGridControls() {
+  const root = document.getElementById('js-product-grid-root');
+  if (!root) return;
+
+  // Obtener el array de productos guardado en el nodo
+  const getProductos = () => root._productos ?? [];
+
+  // ---- Sort dropdown ----
+  const dropdown  = document.getElementById('js-sort-dropdown');
+  const trigger   = document.getElementById('js-sort-trigger');
+  const panel     = document.getElementById('js-sort-panel');
+  const labelEl   = document.getElementById('js-sort-label');
+  const nativeSel = document.getElementById('js-grid-sort');
+
+  const SORT_LABELS = {
+    'default':    'Recomendado',
+    'price-asc':  'Precio: menor → mayor',
+    'price-desc': 'Precio: mayor → menor',
+    'name-asc':   'Nombre A → Z',
+  };
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function applySort(value) {
+    gridState.sort = value;
+    gridState.page = 1;
+    // Actualizar label y estado visual de opciones
+    if (labelEl) labelEl.textContent = SORT_LABELS[value] ?? 'Ordenar';
+    panel?.querySelectorAll('.sort-dropdown__option').forEach(opt => {
+      const active = opt.dataset.sortValue === value;
+      opt.classList.toggle('active', active);
+      opt.setAttribute('aria-selected', active);
+    });
+    if (nativeSel) nativeSel.value = value;
+    closeDropdown();
+    refreshGridContent(getProductos());
+  }
+
+  function openDropdown() {
+    if (!panel || !trigger) return;
+    panel.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+    trigger.classList.add('open');
+  }
+
+  function closeDropdown() {
+    if (!panel || !trigger) return;
+    panel.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.classList.remove('open');
+  }
+
+  // Trigger click — en mobile no hace nada (el select nativo se encarga)
+  trigger?.addEventListener('click', (e) => {
+    if (isMobile()) return;
+    e.stopPropagation();
+    panel.classList.contains('open') ? closeDropdown() : openDropdown();
+  });
+
+  // Opciones del panel custom
+  panel?.addEventListener('click', (e) => {
+    const opt = e.target.closest('[data-sort-value]');
+    if (opt) applySort(opt.dataset.sortValue);
+  });
+
+  // Teclado: Enter/Space abre; Escape cierra; flechas navegan opciones
+  trigger?.addEventListener('keydown', (e) => {
+    if (isMobile()) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      panel.classList.contains('open') ? closeDropdown() : openDropdown();
+    }
+    if (e.key === 'Escape') closeDropdown();
+  });
+
+  panel?.addEventListener('keydown', (e) => {
+    const opts = [...panel.querySelectorAll('.sort-dropdown__option')];
+    const idx  = opts.findIndex(o => o === document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); opts[Math.min(idx + 1, opts.length - 1)]?.focus(); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); opts[Math.max(idx - 1, 0)]?.focus(); }
+    if (e.key === 'Escape')    { closeDropdown(); trigger?.focus(); }
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const opt = e.target.closest('[data-sort-value]');
+      if (opt) applySort(opt.dataset.sortValue);
+    }
+  });
+
+  // Click fuera → cerrar
+  document.addEventListener('click', function onClickOutside(e) {
+    if (dropdown && !dropdown.contains(e.target)) {
+      closeDropdown();
+      // Limpiar listener cuando la vista cambie
+      if (!document.getElementById('js-sort-dropdown')) {
+        document.removeEventListener('click', onClickOutside);
+      }
+    }
+  });
+
+  // Select nativo (mobile ≤768px) — el trigger está oculto, el select se activa al tocar
+  nativeSel?.addEventListener('change', () => applySort(nativeSel.value));
+
+  // Toggle solo disponibles
+  const stockEl = document.getElementById('js-grid-stock');
+  if (stockEl) {
+    stockEl.addEventListener('change', () => {
+      gridState.onlyStock = stockEl.checked;
+      gridState.page = 1;
+      refreshGridContent(getProductos());
+    });
+  }
+
+  // Chips de badges
+  document.getElementById('js-grid-badges')?.addEventListener('click', e => {
+    const btn = e.target.closest('[data-badge]');
+    if (!btn) return;
+    gridState.activeBadge = btn.dataset.badge || null;
+    gridState.page = 1;
+    document.querySelectorAll('#js-grid-badges .grid-chip').forEach(c =>
+      c.classList.toggle('active', c.dataset.badge === (btn.dataset.badge)));
+    refreshGridContent(getProductos());
+  });
+
+  // Chips de tags
+  document.getElementById('js-grid-tags')?.addEventListener('click', e => {
+    const btn = e.target.closest('[data-tag]');
+    if (!btn) return;
+    gridState.activeTag = btn.dataset.tag || null;
+    gridState.page = 1;
+    document.querySelectorAll('#js-grid-tags .grid-tag-chip').forEach(c =>
+      c.classList.toggle('active', c.dataset.tag === (btn.dataset.tag)));
+    refreshGridContent(getProductos());
+  });
+
+  // Botón cargar más (render inicial)
+  document.getElementById('js-load-more')?.addEventListener('click', () => {
+    gridState.page++;
+    refreshGridContent(root._productos ?? []);
+  });
+}
+
+// Re-attacha solo los eventos de click en cards (tras refresh parcial del grid)
+function attachProductCardEvents() {
+  const content = document.getElementById('js-grid-content');
+  if (!content) return;
+  content.querySelectorAll('[data-nav-product]').forEach(card => {
+    card.addEventListener('click', () => navigate('product', { product: card.dataset.navProduct }));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') navigate('product', { product: card.dataset.navProduct });
     });
   });
 }
@@ -1004,7 +1485,7 @@ function renderBadges(p) {
 
 async function shareProduct(p) {
   const url = `${location.origin}${location.pathname}?producto=${p.id}`;
-  const data = { title: p.nombre, text: 'Mira este maravilloso producto:', url };
+  const data = { title: p.nombre, text: '', url };
 
   if (navigator.share) {
     try { await navigator.share(data); } catch { /* cancelado */ }
@@ -1052,7 +1533,7 @@ function iconInstagram() {
 }
 
 function iconShare() {
-  return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-icon lucide-share"><path d="M12 2v13"/><path d="m16 6-4-4-4 4"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>`;
 }
 
 function iconBug() {
@@ -1098,8 +1579,11 @@ function iconByName(name) {
     'layers':       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
     'handshake':    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>`,
     'badge-dollar-sign': `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-dollar-sign-icon lucide-badge-dollar-sign"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>`,
+    'arrow-up-down': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4 4 4"/><path d="M17 8v12m0 0 4-4m-4 4-4-4"/></svg>`,
+    'check':         `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
     'arrow-right': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`,
     'grid-2x2':   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
+    'x': `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`,
     //
   };
   const svg = icons[name] ?? icons['package'];

@@ -4,11 +4,11 @@
     "nombre": "Bulbasaur Fit",
     "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
     "badges": [
-      "novedad",
       "japon"
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -421,6 +421,7 @@
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
+    "cantidad": 2,
     "novedad": false,
     "destacado": false,
     "colecciones": [
@@ -663,6 +664,38 @@
       "galeria": [
         "public/FIT/136/1_3.webp",
         "public/FIT/136/1_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "snorlax-fit",
+    "nombre": "Snorlax Fit",
+    "descripcion": "¡Los Pokémon de la región de Kanto de <strong><em>Pokémon Rojo y Azul</em></strong> inician la primera colección de peluches <strong>Pokémon Fit</strong>, ¡los compañeros de toda una generación, de vuelta en la palma de tu mano!",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Poliéster",
+      "origen": "Japón"
+    },
+    "categoria": "peluches",
+    "tags": [
+      "normal"
+    ],
+    "precio": 24000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [
+      "pokemon-fit"
+    ],
+    "imagenes": {
+      "principal": "public/FIT/143/1_3.webp",
+      "galeria": [
+        "public/FIT/143/1_2.webp",
+        "public/FIT/143/1_1.webp"
       ]
     }
   },
@@ -1444,6 +1477,7 @@
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
+    "cantidad": 2,
     "novedad": false,
     "destacado": false,
     "colecciones": [
@@ -1778,6 +1812,7 @@
     "precio": 24000,
     "moneda": "CLP",
     "stock": true,
+    "cantidad": 2,
     "novedad": false,
     "destacado": false,
     "colecciones": [
