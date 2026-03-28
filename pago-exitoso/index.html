@@ -465,7 +465,12 @@
 
     for (let i = 0; i < MAX; i++) {
       try {
-        const res  = await fetch(`${API_BASE}/api/pedido/${orderId}`)
+        const res  = await fetch(
+          `${API_BASE}/api/pedido/${orderId}`, {
+            headers: {
+              'ngrok-skip-browser-warning': 'true'
+            }
+        })
         if (res.status === 404) {
           document.getElementById('error-order-id').textContent = `Pedido: ${orderId}`
           showState('error')
