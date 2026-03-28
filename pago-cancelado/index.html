@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago cancelado — Tienda Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f7f5f2;
+      --surface: #ffffff;
+      --border:  #e8e4de;
+      --text:    #1a1816;
+      --muted:   #8a8279;
+      --accent:  #c8503a;
+      --radius:  4px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 56px 48px;
+      width: 100%;
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Icon ── */
+    .icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #fdf2f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .x-svg { width: 22px; height: 22px; }
+    .x-line {
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      transition: stroke-dashoffset 0.35s ease;
+    }
+    .x-line.drawn { stroke-dashoffset: 0; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    /* ── Order info ── */
+    .order-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+    }
+    .order-box-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+    .order-box-row:last-child { margin-bottom: 0; }
+    .order-box-row .label { color: var(--muted); }
+    .order-box-row .value { font-weight: 500; font-family: monospace; font-size: 0.8rem; }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-bottom: 10px;
+    }
+    .btn-primary:hover { background: #a83e2b; }
+
+    .btn-secondary {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--text); color: var(--text); }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0;
+      color: var(--border);
+      font-size: 0.75rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 28px;
+    }
+    .faq-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      margin-bottom: 14px;
+    }
+    .faq-q {
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .faq-a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 36px 24px; }
+      main { padding: 40px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Alma</span>
+</header>
+
+<main>
+  <div class="card" id="card">
+
+    <div class="icon-wrap">
+      <svg class="x-svg" viewBox="0 0 22 22">
+        <line class="x-line" id="x1" x1="5" y1="5" x2="17" y2="17" />
+        <line class="x-line" id="x2" x1="17" y1="5" x2="5" y2="17" />
+      </svg>
+    </div>
+
+    <h1>Pago cancelado</h1>
+    <p class="subtitle">
+      No se realizó ningún cargo. Puedes volver a intentarlo cuando quieras — tu carrito sigue disponible.
+    </p>
+
+    <div class="order-box" id="order-box" style="display:none">
+      <div class="order-box-row">
+        <span class="label">N° de pedido</span>
+        <span class="value" id="order-id-display">—</span>
+      </div>
+      <div class="order-box-row">
+        <span class="label">Estado</span>
+        <span class="value" style="color: var(--muted); font-family: 'DM Sans', sans-serif;">Cancelado · sin cargo</span>
+      </div>
+    </div>
+
+    <a class="btn-primary" href="/checkout.html">Volver al checkout</a>
+    <a class="btn-secondary" href="/">Ir al inicio</a>
+
+    <div class="faq">
+      <p class="faq-title">Preguntas frecuentes</p>
+
+      <div class="faq-item">
+        <p class="faq-q">¿Se realizó algún cobro?</p>
+        <p class="faq-a">No. El pago fue cancelado antes de completarse y no se realizó ningún cargo a tu cuenta.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">¿Puedo intentar pagar nuevamente?</p>
+        <p class="faq-a">Sí. Haz clic en "Volver al checkout" para iniciar un nuevo proceso de pago con los mismos productos.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">¿Por qué se canceló el pago?</p>
+        <p class="faq-a">Generalmente ocurre porque se cerró la ventana de pago, venció el tiempo de sesión, o se canceló manualmente. Si crees que fue un error, inténtalo de nuevo.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+
+  const API_BASE = 'http://localhost:8000'
+  // Mostrar card con animación
+  requestAnimationFrame(() => {
+    setTimeout(() => document.getElementById('card').classList.add('visible'), 50)
+  })
+
+  // Animar X
+  setTimeout(() => {
+    document.getElementById('x1').classList.add('drawn')
+    setTimeout(() => document.getElementById('x2').classList.add('drawn'), 150)
+  }, 200)
+
+  // Mostrar order_id si viene en la URL
+  const params  = new URLSearchParams(window.location.search)
+  const orderId = params.get('order')
+
+  if (orderId) {
+    // Avisar al backend que el usuario canceló
+    fetch(`${API_BASE}/api/pedido/${orderId}/cancelar`, { method: 'POST' })
+      .catch(() => {}) // silenciar errores de red — no afecta la UX
+
+    document.getElementById('order-id-display').textContent = orderId.slice(0, 8).toUpperCase()
+    document.getElementById('order-box').style.display = 'block'
+
+    // Limpiar sessionStorage — este pedido fue cancelado
+    sessionStorage.removeItem('last_order_id')
+  }
+</script>
+</body>
+</html>
