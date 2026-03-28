@@ -9,7 +9,7 @@ const CONFIG = {
   storeName:    'Yanmega Ofertas',
   instagramUser: 'yanmegaofertas',
   currency:     'CLP',
-  inventoryUrl: 'https://macronucleate-defunctive-tanner.ngrok-free.dev', // Development only
+  inventoryUrl: 'inventory.json', // TODO: cambiar a endpoint real
   encargosUrl: 'encargos.json',
   landingMaxDestacados: 8,
   landingMaxNovedades: 8,
