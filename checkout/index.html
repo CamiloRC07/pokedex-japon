@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Tienda Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f7f5f2;
+      --surface:  #ffffff;
+      --border:   #e8e4de;
+      --text:     #1a1816;
+      --muted:    #8a8279;
+      --accent:   #c8503a;
+      --accent-h: #a83e2b;
+      --success:  #3a7c5a;
+      --radius:   4px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+    .header-badge {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 960px;
+      margin: 48px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Products ── */
+    .products-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .product-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .product-item:last-of-type { border-bottom: none; }
+
+    .product-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .product-info { flex: 1; }
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .product-price {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .product-check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .product-item.selected .product-check {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .product-item.selected .product-check::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    /* ── Customer form ── */
+    .form-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.15s;
+      outline: none;
+    }
+    input:focus { border-color: var(--text); background: var(--surface); }
+    input::placeholder { color: var(--border); }
+
+    /* ── Order summary ── */
+    .summary-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .summary-items { margin-bottom: 20px; }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .summary-line .name {
+      max-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .summary-empty {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .summary-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+    }
+    .summary-total .label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .summary-total .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+    }
+
+    .btn-pay {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-pay:hover:not(:disabled) { background: var(--accent-h); }
+    .btn-pay:active:not(:disabled) { transform: scale(0.99); }
+    .btn-pay:disabled {
+      background: var(--border);
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+
+    .pay-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Loading overlay ── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(247,245,242,0.85);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .overlay.active { display: flex; }
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .overlay-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── Error banner ── */
+    .error-banner {
+      display: none;
+      background: #fdf2f0;
+      border: 1px solid #f0c4bb;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .error-banner.active { display: block; }
+
+    @media (max-width: 720px) {
+      .page { grid-template-columns: 1fr; }
+      .summary-panel { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Alma</span>
+  <span class="header-badge">Checkout seguro</span>
+</header>
+
+<div class="page">
+
+  <!-- Left column -->
+  <div>
+    <!-- Products -->
+    <div class="products-panel">
+      <h2 class="section-title">Selecciona tus productos</h2>
+
+      <div class="product-item" data-id="vela-01" data-nombre="Vela Aromática Sándalo" data-precio="18900" onclick="toggleProduct(this)">
+        <div class="product-thumb">🕯️</div>
+        <div class="product-info">
+          <div class="product-name">Vela Aromática Sándalo</div>
+          <div class="product-desc">200g · quema de 40 hrs · cera de soya natural</div>
+          <div class="product-price">$18.900</div>
+        </div>
+        <div class="product-check"></div>
+      </div>
+
+      <div class="product-item" data-id="set-02" data-nombre="Set Aromaterapia Lavanda" data-precio="34500" onclick="toggleProduct(this)">
+        <div class="product-thumb">💜</div>
+        <div class="product-info">
+          <div class="product-name">Set Aromaterapia Lavanda</div>
+          <div class="product-desc">Aceite esencial 15ml + difusor de madera</div>
+          <div class="product-price">$34.500</div>
+        </div>
+        <div class="product-check"></div>
+      </div>
+
+      <div class="product-item" data-id="crema-03" data-nombre="Crema Corporal Coco & Vainilla" data-precio="22900" onclick="toggleProduct(this)">
+        <div class="product-thumb">🥥</div>
+        <div class="product-info">
+          <div class="product-name">Crema Corporal Coco & Vainilla</div>
+          <div class="product-desc">250ml · sin parabenos · vegana</div>
+          <div class="product-price">$22.900</div>
+        </div>
+        <div class="product-check"></div>
+      </div>
+
+      <div class="product-item" data-id="jabon-04" data-nombre="Jabón Artesanal Pack x3" data-precio="12900" onclick="toggleProduct(this)">
+        <div class="product-thumb">🧼</div>
+        <div class="product-info">
+          <div class="product-name">Jabón Artesanal Pack x3</div>
+          <div class="product-desc">Avena, miel y romero · 100g c/u</div>
+          <div class="product-price">$12.900</div>
+        </div>
+        <div class="product-check"></div>
+      </div>
+    </div>
+
+    <!-- Customer info -->
+    <div class="form-panel">
+      <h2 class="section-title">Datos de contacto</h2>
+      <div class="form-row">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="María" />
+        </div>
+        <div>
+          <label for="apellido">Apellido</label>
+          <input id="apellido" type="text" placeholder="González" />
+        </div>
+      </div>
+      <div class="form-row full">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="maria@correo.cl" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: summary -->
+  <div class="summary-panel">
+    <h2 class="section-title">Resumen del pedido</h2>
+
+    <div class="summary-items" id="summary-items">
+      <p class="summary-empty">Selecciona al menos un producto</p>
+    </div>
+
+    <hr class="summary-divider" />
+
+    <div class="summary-total">
+      <span class="label">Total</span>
+      <span class="amount" id="total-amount">$0</span>
+    </div>
+
+    <div class="error-banner" id="error-banner"></div>
+
+    <button class="btn-pay" id="btn-pay" disabled onclick="iniciarPago()">
+      Pagar con Fintoc
+    </button>
+    <p class="pay-note">Serás redirigido a la pasarela segura de Fintoc para completar tu transferencia bancaria.</p>
+  </div>
+
+</div>
+
+<!-- Loading overlay -->
+<div class="overlay" id="overlay">
+  <div class="spinner"></div>
+  <span class="overlay-text">Creando sesión de pago…</span>
+</div>
+
+<script>
+  // ── Config ──────────────────────────────────────────────────────────────────
+  const API_BASE = 'https://macronucleate-defunctive-tanner.ngrok-free.dev'
+
+  // ── State ───────────────────────────────────────────────────────────────────
+  const selectedItems = new Map() // id → { id, nombre, precio }
+
+  // ── Helpers ─────────────────────────────────────────────────────────────────
+  const fmt = n => '$' + Number(n).toLocaleString('es-CL')
+
+  function showError(msg) {
+    const el = document.getElementById('error-banner')
+    el.textContent = msg
+    el.classList.add('active')
+  }
+  function clearError() {
+    document.getElementById('error-banner').classList.remove('active')
+  }
+
+  // ── Toggle product ───────────────────────────────────────────────────────────
+  function toggleProduct(el) {
+    const { id, nombre, precio } = el.dataset
+    if (selectedItems.has(id)) {
+      selectedItems.delete(id)
+      el.classList.remove('selected')
+    } else {
+      selectedItems.set(id, { id, nombre, precio: parseInt(precio) })
+      el.classList.add('selected')
+    }
+    renderSummary()
+  }
+
+  // ── Render summary ───────────────────────────────────────────────────────────
+  function renderSummary() {
+    const container = document.getElementById('summary-items')
+    const btnPay    = document.getElementById('btn-pay')
+    const totalEl   = document.getElementById('total-amount')
+
+    if (selectedItems.size === 0) {
+      container.innerHTML = '<p class="summary-empty">Selecciona al menos un producto</p>'
+      totalEl.textContent = '$0'
+      btnPay.disabled = true
+      return
+    }
+
+    let total = 0
+    let html  = ''
+    for (const item of selectedItems.values()) {
+      total += item.precio
+      html  += `<div class="summary-line">
+        <span class="name">${item.nombre}</span>
+        <span>${fmt(item.precio)}</span>
+      </div>`
+    }
+
+    container.innerHTML = html
+    totalEl.textContent = fmt(total)
+    btnPay.disabled     = false
+    clearError()
+  }
+
+  // ── Iniciar pago ─────────────────────────────────────────────────────────────
+  async function iniciarPago() {
+    clearError()
+
+    const email   = document.getElementById('email').value.trim()
+    const nombre  = document.getElementById('nombre').value.trim()
+    const apellido = document.getElementById('apellido').value.trim()
+
+    if (!email) { showError('Ingresa tu email para continuar.'); return }
+
+    const order_id = crypto.randomUUID()
+    const items    = Array.from(selectedItems.values()).map(i => ({
+      id:     i.id,
+      nombre: i.nombre,
+      precio: i.precio,
+    }))
+
+    // Deshabilitar botón inmediatamente — previene doble click
+    document.getElementById('btn-pay').disabled = true
+    document.getElementById('overlay').classList.add('active')
+
+    try {
+      const res = await fetch(`${API_BASE}/api/checkout`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          order_id,
+          items,
+          email,
+          nombre: nombre ? `${nombre} ${apellido}`.trim() : undefined,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.detail || 'Error al crear la sesión de pago.')
+      }
+
+      // Guardar order_id en sessionStorage por si el usuario vuelve
+      sessionStorage.setItem('last_order_id', order_id)
+
+      // Redirigir a Fintoc
+      window.location.href = data.redirect_url
+
+    } catch (err) {
+      document.getElementById('overlay').classList.remove('active')
+      document.getElementById('btn-pay').disabled = false
+      showError(err.message || 'No pudimos conectar con el procesador de pago. Intenta nuevamente.')
+    }
+  }
+</script>
+</body>
+</html>

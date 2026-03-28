@@ -9,7 +9,7 @@ const CONFIG = {
   storeName:    'Yanmega Ofertas',
   instagramUser: 'yanmegaofertas',
   currency:     'CLP',
-  inventoryUrl: 'inventory.json',
+  inventoryUrl: 'https://macronucleate-defunctive-tanner.ngrok-free.dev', // Development only
   encargosUrl: 'encargos.json',
   landingMaxDestacados: 8,
   landingMaxNovedades: 8,
@@ -585,9 +585,9 @@ function renderInfo() {
   const aboutHTML = CONFIG.about.imagen
     ? `<div class="about-wrap has-image">
         <img class="about-img" src="${CONFIG.about.imagen}" alt="Sobre la tienda" />
-        <p class="about-text">${CONFIG.about.texto}</p>
+        <p class="about-text">${escapeHtml(CONFIG.about.texto)}</p>
         </div>`
-    : `<p class="about-text">${CONFIG.about.texto}</p>`;
+    : `<p class="about-text">${escapeHtml(CONFIG.about.texto)}</p>`;
 
   const faqHTML = CONFIG.faqs.map((f, i) => `
     <div class="faq-item" id="faq-${i}">
@@ -1600,6 +1600,7 @@ async function init() {
   try {
     const res = await fetch(CONFIG.inventoryUrl);
     if (!res.ok) throw new Error('No se pudo cargar el inventario.');
+    console.log(res)
     inventory = await res.json();
   } catch (err) {
     document.getElementById('js-main').innerHTML = `

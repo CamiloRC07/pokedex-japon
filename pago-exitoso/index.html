@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago exitoso — Tienda Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f0f4f1;
+      --surface: #ffffff;
+      --border:  #dde8e0;
+      --text:    #1a1e1b;
+      --muted:   #7a8c7d;
+      --success: #2d6e4e;
+      --success-light: #eaf3ed;
+      --accent:  #c8503a;
+      --radius:  4px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 56px 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      width: 100%;
+      max-width: 520px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── States ── */
+    .state { display: none; }
+    .state.active { display: block; }
+
+    /* Loading state */
+    .loading-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+    }
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--border);
+      border-top-color: var(--success);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .loading-dots::after {
+      content: '';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+    @keyframes dots {
+      0%   { content: ''; }
+      25%  { content: '.'; }
+      50%  { content: '..'; }
+      75%  { content: '...'; }
+    }
+
+    /* Success state */
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--success-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .check-svg { width: 24px; height: 24px; }
+    .check-path {
+      stroke: var(--success);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 30;
+      stroke-dashoffset: 30;
+      transition: stroke-dashoffset 0.5s ease 0.1s;
+    }
+    .check-path.drawn { stroke-dashoffset: 0; }
+
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .success-subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    /* Order detail */
+    .order-meta {
+      background: var(--success-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .order-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+    .order-meta-row:last-child { margin-bottom: 0; }
+    .order-meta-row .label { color: var(--muted); }
+    .order-meta-row .value { font-weight: 500; }
+
+    .items-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .items-list { margin-bottom: 24px; }
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .item-row:last-child { border-bottom: none; }
+    .item-row .item-name { color: var(--text); }
+    .item-row .item-price { color: var(--muted); }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 32px;
+      padding-top: 4px;
+    }
+    .total-row .label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .total-row .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    .btn-home {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: var(--text);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-home:hover { opacity: 0.85; }
+
+    /* Error / timeout state */
+    .error-icon {
+      width: 56px;
+      height: 56px;
+      background: #fdf2f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+    }
+    .error-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .error-body {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .order-id-code {
+      font-family: monospace;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      word-break: break-all;
+    }
+    .btn-retry {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      margin-bottom: 12px;
+    }
+    .btn-retry:hover { border-color: var(--text); }
+
+    /* requires_action state */
+    .pending-icon {
+      width: 56px;
+      height: 56px;
+      background: #fef9ec;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+    }
+    .pending-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .pending-body {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .pulse-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #d4a020;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #a07010;
+      background: #fef9ec;
+      border: 1px solid #f0d88a;
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 32px 24px; }
+      main { padding: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Alma</span>
+</header>
+
+<main>
+  <div class="card" id="card">
+
+    <!-- Estado: cargando -->
+    <div class="state active" id="state-loading">
+      <div class="loading-wrap">
+        <div class="spinner"></div>
+        <span class="loading-text">Confirmando tu pago<span class="loading-dots"></span></span>
+      </div>
+    </div>
+
+    <!-- Estado: éxito -->
+    <div class="state" id="state-success">
+      <div class="success-icon">
+        <svg class="check-svg" viewBox="0 0 24 24">
+          <polyline class="check-path" id="check-path" points="4,13 9,18 20,7" />
+        </svg>
+      </div>
+      <h1 class="success-title">¡Pago recibido!</h1>
+      <p class="success-subtitle">Tu pedido ha sido confirmado. Recibirás un email con los detalles a la brevedad.</p>
+
+      <div class="order-meta">
+        <div class="order-meta-row">
+          <span class="label">N° de pedido</span>
+          <span class="value" id="meta-order-id">—</span>
+        </div>
+        <div class="order-meta-row">
+          <span class="label">Cliente</span>
+          <span class="value" id="meta-nombre">—</span>
+        </div>
+      </div>
+
+      <p class="items-title">Detalle del pedido</p>
+      <div class="items-list" id="items-list"></div>
+
+      <div class="total-row">
+        <span class="label">Total pagado</span>
+        <span class="amount" id="total-paid">—</span>
+      </div>
+
+      <a class="btn-home" href="/checkout">Seguir comprando</a>
+    </div>
+
+    <!-- Estado: acción requerida -->
+    <div class="state" id="state-requires-action">
+      <div class="pending-icon">⏳</div>
+      <h1 class="pending-title">Confirmación pendiente</h1>
+      <div class="status-pill"><span class="pulse-dot"></span>Esperando autorización bancaria</div>
+      <p class="pending-body">
+        Tu banco requiere que confirmes esta transferencia desde tu aplicación bancaria o por SMS. Una vez que autorices, tu pedido quedará confirmado automáticamente.
+      </p>
+      <div class="order-id-code" id="pending-order-id"></div>
+      <a class="btn-home" href="/checkout">Volver al inicio</a>
+    </div>
+
+    <!-- Estado: acción requerida -->
+    <div class="state" id="state-cancelled">
+      <div class="pending-icon">🚫</div>
+      <h1 class="pending-title">Orden de pago cancelada</h1>
+      <div class="status-pill"><span class="pulse-dot"></span>No se realizó ningún cargo.</div>
+      <p class="pending-body">
+        El pago fue cancelado antes de completarse y no se realizó ningún cargo a tu cuenta.
+        Generalmente ocurre porque se cerró la ventana de pago, venció el tiempo de sesión, o se canceló manualmente.
+      </p>
+      <a class="btn-home" href="/checkout">Volver al inicio</a>
+    </div>
+
+    <!-- Estado: error / timeout -->
+    <div class="state" id="state-error">
+      <div class="error-icon">⚠️</div>
+      <h1 class="error-title">No pudimos confirmar tu pago</h1>
+      <p class="error-body">
+        No recibimos confirmación del banco. Esto puede deberse a un retraso. Guarda tu N° de pedido y contáctanos si el problema persiste.
+      </p>
+      <div class="order-id-code" id="error-order-id"></div>
+      <button class="btn-retry" onclick="iniciarPolling()">Verificar nuevamente</button>
+      <a class="btn-home" href="/checkout">Volver al inicio</a>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const API_BASE = 'http://localhost:8000'
+  const fmt = n => '$' + Number(n).toLocaleString('es-CL')
+
+  // ── Leer order_id desde URL ─────────────────────────────────────────────────
+  const params  = new URLSearchParams(window.location.search)
+  const orderId = params.get('order') || sessionStorage.getItem('last_order_id')
+
+  // Mostrar card con animación
+  requestAnimationFrame(() => {
+    setTimeout(() => document.getElementById('card').classList.add('visible'), 50)
+  })
+
+  function showState(name) {
+    document.querySelectorAll('.state').forEach(el => el.classList.remove('active'))
+    document.getElementById(`state-${name}`).classList.add('active')
+  }
+
+  function renderSuccess(order) {
+    // Order meta
+    document.getElementById('meta-order-id').textContent = order.order_id.slice(0, 8).toUpperCase()
+    document.getElementById('meta-nombre').textContent   = order.customer_name || 'Cliente'
+
+    // Items
+    const list = document.getElementById('items-list')
+    list.innerHTML = (order.items || []).map(item => `
+      <div class="item-row">
+        <span class="item-name">${item.nombre}</span>
+        <span class="item-price">${fmt(item.precio)}</span>
+      </div>
+    `).join('')
+
+    // Total
+    document.getElementById('total-paid').textContent = fmt(order.amount)
+
+    showState('success')
+
+    // Animar checkmark
+    setTimeout(() => {
+      document.getElementById('check-path').classList.add('drawn')
+    }, 100)
+  }
+
+  // ── Polling ──────────────────────────────────────────────────────────────────
+  async function iniciarPolling() {
+    if (!orderId) {
+      document.getElementById('error-order-id').textContent = 'No se encontró ID de pedido en la URL.'
+      showState('error')
+      return
+    }
+
+    showState('loading')
+
+    const MAX     = 2       // intentos máximos
+    const DELAY   = 1500     // ms entre intentos
+
+    for (let i = 0; i < MAX; i++) {
+      try {
+        const res  = await fetch(`${API_BASE}/api/pedido/${orderId}`)
+        if (res.status === 404) {
+          document.getElementById('error-order-id').textContent = `Pedido: ${orderId}`
+          showState('error')
+          return
+        }
+
+        const data = await res.json()
+
+        switch (data.status) {
+          case 'succeeded':
+            renderSuccess(data)
+            return
+
+          case 'failed':
+          case 'expired':
+            document.getElementById('error-order-id').textContent = `Pedido: ${orderId}`
+            showState('error')
+            return
+
+          case 'requires_action':
+            document.getElementById('pending-order-id').textContent = `Pedido: ${orderId}`
+            showState('requires-action')
+            return
+
+          case 'cancelled':
+            document.getElementById('pending-order-id').textContent = `Pedido: ${orderId}`
+            showState('cancelled')
+            return
+
+          // PENDING → seguir esperando
+        }
+
+      } catch (err) {
+        // Error de red — seguir reintentando
+        console.warn('Error consultando estado:', err)
+      }
+
+      await new Promise(r => setTimeout(r, DELAY))
+    }
+
+    // Timeout: nunca llegó SUCCEEDED
+    document.getElementById('error-order-id').textContent = `Pedido: ${orderId}`
+    showState('error')
+  }
+
+  // Arrancar polling al cargar
+  iniciarPolling()
+</script>
+</body>
+</html>
