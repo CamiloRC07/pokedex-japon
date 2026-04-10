@@ -8,7 +8,6 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
-      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -1146,7 +1145,7 @@
     ],
     "precio": 24000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [
