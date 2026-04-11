@@ -8,6 +8,7 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -1135,6 +1136,7 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -2359,6 +2361,630 @@
         "public/FIT/807/1_1.webp",
         "public/FIT/807/1_4.webp",
         "public/FIT/807/1_5.webp"
+      ]
+    }
+  },
+  {
+    "id": "tyrogue-hitmons",
+    "nombre": "Tyrogue & Hitmons",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "lucha"
+    ],
+    "precio": 15000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/hitmonlee/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/hitmonlee/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "horsea-seadra-kingdra",
+    "nombre": "Horsea & Seadra & Kingdra",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "agua",
+      "dragon"
+    ],
+    "precio": 12000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/horsea/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/horsea/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "magikarp-gyarados",
+    "nombre": "Magikarp & Gyarados",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "agua",
+      "volador"
+    ],
+    "precio": 9000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/magikarp/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/magikarp/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "eevee-eeveelutions",
+    "nombre": "Eevee & Eeveelutions",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "normal",
+      "agua",
+      "electrico",
+      "fuego",
+      "psiquico",
+      "siniestro",
+      "planta",
+      "hielo"
+    ],
+    "precio": 20000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/eevee-eeveelutions/L_1.webp",
+      "galeria": []
+    }
+  },
+  {
+    "id": "porygon-porygon2-porygon-z",
+    "nombre": "Porygon & Porygon2 & Porygon-Z",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "normal"
+    ],
+    "precio": 12000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/porygon-porygon2-porygon-z/L_1.webp",
+      "galeria": []
+    }
+  },
+  {
+    "id": "articuno",
+    "nombre": "Articuno",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "hielo",
+      "volador"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/articuno/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/articuno/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "zapdos",
+    "nombre": "Zapdos",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "electrico",
+      "volador"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/zapdos/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/zapdos/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "moltres",
+    "nombre": "Moltres",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "fuego",
+      "volador"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/moltres/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/moltres/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "mewtwo",
+    "nombre": "Mewtwo",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "psiquico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/mewtwo/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/mewtwo/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "raikou",
+    "nombre": "Raikou",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "electrico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/raikou/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/raikou/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "entei",
+    "nombre": "Entei",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "fuego"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/entei/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/entei/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "suicune",
+    "nombre": "Suicune",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "agua"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/suicune/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/suicune/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "larvitar-pupitar-tyranitar",
+    "nombre": "Larvitar & Pupitar & Tyranitar",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "roca",
+      "siniestro"
+    ],
+    "precio": 12000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/larvitar-pupitar-tyranitar/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/larvitar-pupitar-tyranitar/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "raichu-de-alola",
+    "nombre": "Raichu de Alola",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "electrico",
+      "psiquico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/raichu-de-alola/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/raichu-de-alola/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "mimikyu",
+    "nombre": "Mimikyu",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "fantasma",
+      "hada"
+    ],
+    "precio": 9000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/mimikyu/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/mimikyu/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "tapu-koko",
+    "nombre": "Tapu Koko",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "electrico",
+      "hada"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/tapu-koko/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/tapu-koko/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "fuecoco-crocalor-skeledirge",
+    "nombre": "Fuecoco % Crocalor & Skeledirge",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "fuego",
+      "fantasma"
+    ],
+    "precio": 12000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": false,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/fuecoco-crocalor-skeledirge/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/fuecoco-crocalor-skeledirge/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "ferropuas",
+    "nombre": "Ferropúas",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "roca",
+      "electrico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/ferropuas/L_1.webp",
+      "galeria": [
+        "public/METALCHARM/ferropuas/L_2.webp"
+      ]
+    }
+  },
+  {
+    "id": "electrofuria",
+    "nombre": "Electrofuria",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "electrico",
+      "dragon"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/electrofuria/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/electrofuria/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "ferromole",
+    "nombre": "Ferromole",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "roca",
+      "psiquico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/ferromole/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/ferromole/L_1.webp"
+      ]
+    }
+  },
+  {
+    "id": "ferrotesta",
+    "nombre": "Ferrotesta",
+    "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
+    "badges": [
+      "japon"
+    ],
+    "detalles": {
+      "marca": "Pokémon Center Original",
+      "material": "Aleación de zinc / hierro",
+      "origen": "Japón"
+    },
+    "categoria": "colgantes",
+    "tags": [
+      "acero",
+      "psiquico"
+    ],
+    "precio": 5000,
+    "moneda": "CLP",
+    "stock": true,
+    "novedad": false,
+    "destacado": true,
+    "colecciones": [],
+    "imagenes": {
+      "principal": "public/METALCHARM/ferrotesta/L_2.webp",
+      "galeria": [
+        "public/METALCHARM/ferrotesta/L_1.webp"
       ]
     }
   }
