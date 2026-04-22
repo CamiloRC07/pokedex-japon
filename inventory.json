@@ -147,6 +147,7 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -157,7 +158,7 @@
     ],
     "precio": 24000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [
@@ -972,6 +973,7 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -981,7 +983,7 @@
     ],
     "precio": 24000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [
@@ -1004,6 +1006,7 @@
     ],
     "detalles": {
       "marca": "Pokémon Center Original",
+      "alto": "",
       "material": "Poliéster",
       "origen": "Japón"
     },
@@ -1013,7 +1016,7 @@
     ],
     "precio": 24000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [
@@ -2737,7 +2740,7 @@
     ],
     "precio": 12000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [],
@@ -2827,7 +2830,7 @@
     ],
     "precio": 5000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": false,
     "colecciones": [],
@@ -2840,7 +2843,7 @@
   },
   {
     "id": "fuecoco-crocalor-skeledirge",
-    "nombre": "Fuecoco % Crocalor & Skeledirge",
+    "nombre": "Fuecoco & Crocalor & Skeledirge",
     "descripcion": "Producto exclusivo y original del Pokémon Center de Japón, parte de la colección <strong><em>Pokédex Nacional de Metal Charms</em></strong> — la serie más completa de dije metálicos oficiales que existe.",
     "badges": [
       "japon"
@@ -2917,7 +2920,7 @@
     ],
     "precio": 5000,
     "moneda": "CLP",
-    "stock": true,
+    "stock": false,
     "novedad": false,
     "destacado": true,
     "colecciones": [],

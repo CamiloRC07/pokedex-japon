@@ -495,7 +495,6 @@
 
     if (!email) { showError('Ingresa tu email para continuar.'); return }
 
-    const order_id = crypto.randomUUID()
     const items    = Array.from(selectedItems.values()).map(i => ({
       id:     i.id,
       nombre: i.nombre,
@@ -511,7 +510,6 @@
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          order_id,
           items,
           email,
           nombre: nombre ? `${nombre} ${apellido}`.trim() : undefined,
@@ -525,7 +523,8 @@
       }
 
       // Guardar order_id en sessionStorage por si el usuario vuelve
-      sessionStorage.setItem('last_order_id', order_id)
+      sessionStorage.setItem('last_order_id', data.order_id)
+      console.log(data)
 
       // Redirigir a Fintoc
       window.location.href = data.redirect_url
